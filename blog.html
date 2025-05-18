@@ -1,25 +1,127 @@
-<main class="fade-in">
-  <section class="container blog-section">
-    <h1 class="playfair-font">Latest News & Trends</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VRATUS™ Watches - Blog</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato&family=Merriweather&family=Playfair+Display&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="index.html" class="logo playfair-font">VRATUS™</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+        </ul>
+        <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </nav>
+  </header>
 
-    <div class="blog-list">
-      <article class="blog-post">
-        <img src="https://images.unsplash.com/photo-1509475826633-fed577a2c71b?auto=format&fit=crop&w=600&q=80" alt="Watch trends 2025" />
-        <h2><a href="https://www.hodinkee.com/articles/top-watch-trends-2025" target="_blank" rel="noopener noreferrer">Top Watch Trends in 2025</a></h2>
-        <p class="lato-font">Explore the latest trends shaping the watch industry in 2025, from materials to tech innovations.</p>
-      </article>
+  <main class="fade-in">
+    <section class="container blog-section">
+      <h1 class="playfair-font">Latest News & Trends</h1>
 
-      <article class="blog-post">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Craftsmanship behind VRATUS™" />
-        <h2><a href="blog/craftsmanship.html">The Craftsmanship Behind VRATUS™ Watches</a></h2>
-        <p class="lato-font">Discover how VRATUS™ combines traditional techniques with modern design to create rugged luxury watches.</p>
-      </article>
+      <div class="blog-list">
+        <article class="blog-post">
+          <img
+            src="https://images.unsplash.com/photo-1509475826633-fed577a2c71b?auto=format&fit=crop&w=600&q=80"
+            alt="Watch trends 2025"
+          />
+          <h2>
+            <a
+              href="https://www.hodinkee.com/articles/top-watch-trends-2025"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Top Watch Trends in 2025</a
+            >
+          </h2>
+          <p class="lato-font">
+            Explore the latest trends shaping the watch industry in 2025, from
+            materials to tech innovations.
+          </p>
+        </article>
 
-      <article class="blog-post">
-        <img src="https://images.unsplash.com/photo-1517959105829-55eb3edb99b5?auto=format&fit=crop&w=600&q=80" alt="Watch care tips" />
-        <h2><a href="blog/watch-care-tips.html">Essential Watch Care Tips</a></h2>
-        <p class="lato-font">Keep your timepiece in pristine condition with these expert care and maintenance tips.</p>
-      </article>
+        <article class="blog-post">
+          <img
+            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+            alt="Craftsmanship behind VRATUS™"
+          />
+          <h2><a href="blog/craftsmanship.html">The Craftsmanship Behind VRATUS™ Watches</a></h2>
+          <p class="lato-font">
+            Discover how VRATUS™ combines traditional techniques with modern design to create rugged luxury watches.
+          </p>
+        </article>
+
+        <article class="blog-post">
+          <img
+            src="https://images.unsplash.com/photo-1517959105829-55eb3edb99b5?auto=format&fit=crop&w=600&q=80"
+            alt="Watch care tips"
+          />
+          <h2><a href="blog/watch-care-tips.html">Essential Watch Care Tips</a></h2>
+          <p class="lato-font">
+            Keep your timepiece in pristine condition with these expert care and maintenance tips.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="social-links">
+        <a
+          href="https://www.instagram.com/vratuswatches"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          >Instagram</a
+        >
+        <a
+          href="https://www.facebook.com/vratuswatches"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+          >Facebook</a
+        >
+        <a
+          href="https://www.youtube.com/vratuswatches"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+          >YouTube</a
+        >
+        <a
+          href="https://twitter.com/vratuswatches"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Twitter"
+          >Twitter</a
+        >
+      </div>
+      <form id="newsletter-form" class="newsletter-form" aria-label="Newsletter Subscription">
+        <input
+          type="email"
+          name="email"
+          placeholder="Subscribe to newsletter"
+          aria-label="Email"
+          required
+        />
+        <button type="submit" class="btn btn-secondary">Subscribe</button>
+      </form>
+      <p class="footer-text">© 2025 VRATUS™ Watches. All Rights Reserved.</p>
     </div>
-  </section>
-</main>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
