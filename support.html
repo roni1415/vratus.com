@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support | VRATUS™ Watches</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">VRATUS™</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="support.html" class="active">Support</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+      <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="support-intro fade-in">
+      <h1>Customer Support</h1>
+      <p>We’re here to help with any questions or concerns about your VRATUS™ watch.</p>
+    </section>
+
+    <section class="faq fade-in">
+      <h2>Frequently Asked Questions</h2>
+      <details>
+        <summary>How do I register my watch warranty?</summary>
+        <p>You can register your warranty by filling out the registration form included in your watch package or online through our website.</p>
+      </details>
+      <details>
+        <summary>What is the return policy?</summary>
+        <p>We offer a 30-day return policy on all new watches in original condition with packaging and receipts.</p>
+      </details>
+      <details>
+        <summary>How do I get my watch serviced?</summary>
+        <p>Contact our support team to locate the nearest authorized service center or arrange for mail-in servicing.</p>
+      </details>
+      <details>
+        <summary>Do you offer international shipping?</summary>
+        <p>Yes, we ship worldwide with tracking and insurance options.</p>
+      </details>
+    </section>
+
+    <section class="contact-form-section fade-in">
+      <h2>Contact Us</h2>
+      <form id="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your full name" required />
+        
+        <label for="email-support">Email</label>
+        <input type="email" id="email-support" placeholder="Your email address" required />
+        
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" placeholder="How can we help you?" required></textarea>
+        
+        <button type="submit">Send Message</button>
+        <p id="contact-msg" class="form-message"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="social-links">
+        <a href="https://www.instagram.com/vratuswatches" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+        <a href="https://www.facebook.com/vratuswatches" target="_blank" rel="noopener noreferrer">👍 Facebook</a>
+        <a href="https://www.youtube.com/vratuswatches" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
+        <a href="https://twitter.com/vratuswatches" target="_blank" rel="noopener noreferrer">🐦 Twitter</a>
+      </div>
+
+      <form id="newsletter-form">
+        <label for="email">Subscribe to our newsletter:</label>
+        <input type="email" id="email" placeholder="Your email address" required />
+        <button type="submit">Subscribe</button>
+        <p id="newsletter-msg" class="form-message"></p>
+      </form>
+
+      <p class="footer-copy">&copy; 2025 VRATUS™. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
