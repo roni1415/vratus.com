@@ -21,6 +21,72 @@
     }
 
     /* Reset and Base Styles */
+
+    .product-section {
+  padding: 4rem 2rem;
+  background-color: var(--bg);
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: var(--light-text);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.product-grid {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  background-color: var(--card);
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 280px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+
+.product-card p {
+  font-size: 0.95rem;
+  color: var(--light-text);
+}
+
+    :root {
+  --primary: #1e2b4a; /* deep blue */
+  --secondary: #800020; /* deep wine red */
+  --bg: #fdfdfd;
+  --card: #ffffff;
+  --light-text: #555555;
+}
+
+    
     * {
       box-sizing: border-box;
       margin: 0;
@@ -305,32 +371,29 @@
     </ul>
   </section>
 
-<section id="product" class="product">
-  <h2>Signature Timepieces</h2>
-  <p>Discover the art of rugged elegance with our VRATUS™ Vortex Hybrid Collection — where nature’s raw textures meet refined horology. Each model is a tribute to bold design, robust construction, and timeless appeal.</p>
+<section id="product" class="product-section">
+  <h2 class="section-title">Signature Timepieces</h2>
+  <p class="section-description">Discover rugged luxury with our VRATUS™ Vortex Hybrid collection — where nature’s raw textures meet refined horology.</p>
 
-  <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center;">
-    
-    <figure style="flex: 1 1 250px; text-align: center;">
-      <img src="Watch1.png" alt="Vortex Glacier Blue" style="width: 100%; border-radius: 10px; box-shadow: 0 6px 15px rgba(0,0,0,0.2);" />
-      <figcaption style="margin-top: 0.7rem; font-weight: 600; font-size: 1.1rem; color: var(--secondary); user-select: none;">Vortex Glacier Blue</figcaption>
-      <p style="font-size: 0.95rem; color: var(--light-text);">A textured dial reflecting frozen landscapes with a deep blue finish.</p>
-    </figure>
-
-    <figure style="flex: 1 1 250px; text-align: center;">
-      <img src="Watch2.png" alt="Vortex Forest Green" style="width: 100%; border-radius: 10px; box-shadow: 0 6px 15px rgba(0,0,0,0.2);" />
-      <figcaption style="margin-top: 0.7rem; font-weight: 600; font-size: 1.1rem; color: var(--secondary); user-select: none;">Vortex Forest Green</figcaption>
-      <p style="font-size: 0.95rem; color: var(--light-text);">Inspired by ancient woods, this model speaks of strength and stillness.</p>
-    </figure>
-
-    <figure style="flex: 1 1 250px; text-align: center;">
-      <img src="Watch3.png" alt="Vortex Obsidian Black" style="width: 100%; border-radius: 10px; box-shadow: 0 6px 15px rgba(0,0,0,0.2);" />
-      <figcaption style="margin-top: 0.7rem; font-weight: 600; font-size: 1.1rem; color: var(--secondary); user-select: none;">Vortex Obsidian Black</figcaption>
-      <p style="font-size: 0.95rem; color: var(--light-text);">Bold and minimalist — for those who lead with confidence and clarity.</p>
-    </figure>
-
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="Watch1.png" alt="Vortex Glacier Blue">
+      <h3>Vortex Glacier Blue</h3>
+      <p>A dial reflecting frozen landscapes with an icy deep-blue shimmer.</p>
+    </div>
+    <div class="product-card">
+      <img src="Watch2.png" alt="Vortex Forest Green">
+      <h3>Vortex Forest Green</h3>
+      <p>Nature’s strength captured in rich forest hues and rugged textures.</p>
+    </div>
+    <div class="product-card">
+      <img src="Watch3.png" alt="Vortex Obsidian Black">
+      <h3>Vortex Obsidian Black</h3>
+      <p>Minimalism meets power in a bold, obsidian-black silhouette.</p>
+    </div>
   </div>
 </section>
+
 
   <section id="contact">
     <h2>Contact Us</h2>
