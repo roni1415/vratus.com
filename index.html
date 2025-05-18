@@ -2,37 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VRATUS™ - Rugged Luxury Elegance</title>
   <style>
-    /* VRATUS™ Color Palette */
     :root {
       --deep-blue: #0d1b2a;
       --wine-red: #6e0b14;
       --deep-green: #1f3a3d;
       --soft-cream: #f9f7f1;
       --warm-beige: #e6ded1;
-      --dark-charcoal: #2c2c2c;
       --accent-red: #a32e2e;
 
       --bg: var(--soft-cream);
       --text: var(--deep-blue);
-      --section-bg: var(--warm-beige);
       --header-bg: var(--warm-beige);
+      --section-bg: var(--warm-beige);
       --footer-bg: var(--deep-green);
-      --footer-text: var(--warm-beige);
+      --footer-text: var(--soft-cream);
     }
 
     body.dark {
       --bg: #0f1217;
       --text: #e0e0e0;
-      --section-bg: #1a1d23;
       --header-bg: #12161c;
+      --section-bg: #1a1d23;
       --footer-bg: #0d1b2a;
       --footer-text: #e6ded1;
     }
 
-    /* Global Styles */
     * {
       margin: 0;
       padding: 0;
@@ -43,22 +40,9 @@
       font-family: 'Georgia', serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
-      transition: background 0.4s, color 0.4s;
+      transition: background 0.4s ease, color 0.4s ease;
     }
 
-    a {
-      color: var(--wine-red);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: var(--accent-red);
-    }
-
-    /* Header Styles */
     header {
       background: var(--header-bg);
       padding: 1rem 2rem;
@@ -67,16 +51,15 @@
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 999;
       border-bottom: 2px solid var(--wine-red);
     }
 
     .logo {
-      font-weight: 900;
-      font-size: 2rem;
-      letter-spacing: 4px;
+      font-weight: bold;
+      font-size: 1.8rem;
       color: var(--text);
-      user-select: none;
+      letter-spacing: 2px;
     }
 
     nav {
@@ -84,25 +67,28 @@
       align-items: center;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 600;
+      transition: color 0.3s;
     }
 
-    nav a {
-      margin-left: 2rem;
-      font-size: 1.1rem;
+    nav a:hover {
+      color: var(--accent-red);
     }
 
     .theme-toggle {
-      margin-left: 2rem;
+      margin-left: 1.5rem;
       padding: 0.4rem 0.8rem;
-      border: 1px solid var(--wine-red);
       background: transparent;
+      border: 2px solid var(--wine-red);
       color: var(--text);
       border-radius: 6px;
       cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .theme-toggle:hover {
@@ -110,101 +96,85 @@
       color: var(--soft-cream);
     }
 
-    /* Hamburger Menu Styles */
-    .menu-toggle {
+    .hamburger {
       display: none;
       flex-direction: column;
-      justify-content: space-between;
-      width: 26px;
-      height: 22px;
       cursor: pointer;
+      margin-left: 1.5rem;
     }
 
-    .menu-toggle span {
+    .hamburger div {
+      width: 25px;
       height: 3px;
       background: var(--text);
-      border-radius: 3px;
-      transition: 0.3s ease;
+      margin: 4px;
+      transition: 0.4s;
     }
 
-    /* Hero Section */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--section-bg);
+      position: absolute;
+      top: 70px;
+      right: 0;
+      width: 200px;
+      border-left: 2px solid var(--wine-red);
+      padding: 1rem;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-menu a {
+      margin: 0.5rem 0;
+    }
+
+    .show {
+      display: flex;
+    }
+
+    section {
+      padding: 4rem 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: var(--wine-red);
+    }
+
     .hero {
-      background: linear-gradient(135deg, var(--section-bg), var(--bg));
-      padding: 5rem 1rem 6rem;
       text-align: center;
+      padding-top: 5rem;
     }
 
     .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      animation: fadeInDown 1s ease-out forwards;
-      opacity: 0;
+      font-size: 3rem;
     }
 
     .hero p {
-      font-size: 1.3rem;
-      max-width: 700px;
-      margin: 0 auto;
+      margin-top: 1rem;
       font-style: italic;
-      animation: fadeInUp 1s ease-out forwards;
-      animation-delay: 0.4s;
-      opacity: 0;
-    }
-
-    /* Sections */
-    .about, .vision, .founder, .contact {
-      max-width: 850px;
-      margin: 3rem auto;
-      background: var(--section-bg);
-      padding: 2.5rem 3rem;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    }
-
-    .about h2, .vision h2, .founder h2, .contact h2 {
-      color: var(--wine-red);
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .about p, .vision p, .founder p, .contact p {
-      font-size: 1.1rem;
-    }
-
-    /* Product Section */
-    .product {
-      text-align: center;
-      margin: 4rem auto;
+      font-size: 1.2rem;
     }
 
     .product img {
-      width: 320px;
-      max-width: 90vw;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(110, 11, 20, 0.25);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.1));
+      width: 300px;
+      max-width: 90%;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease;
     }
 
     .product img:hover {
-      transform: scale(1.06) rotate(1.5deg);
-      box-shadow: 0 15px 40px rgba(163, 46, 46, 0.5);
+      transform: scale(1.05);
     }
 
-    /* Contact Form */
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.3rem;
-    }
-
-    .contact input,
-    .contact textarea {
-      padding: 0.9rem 1rem;
-      font-size: 1rem;
+    .contact input, .contact textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
       border: 2px solid var(--deep-green);
-      border-radius: 8px;
+      border-radius: 6px;
       background: var(--bg);
       color: var(--text);
     }
@@ -212,15 +182,13 @@
     .contact button {
       background: var(--wine-red);
       color: var(--soft-cream);
+      padding: 0.8rem 1.2rem;
       border: none;
-      padding: 1rem;
-      font-size: 1.15rem;
-      font-weight: 700;
-      border-radius: 8px;
+      border-radius: 6px;
+      font-weight: 600;
       cursor: pointer;
     }
 
-    /* Footer */
     footer {
       background: var(--footer-bg);
       color: var(--footer-text);
@@ -228,96 +196,101 @@
       padding: 1rem;
     }
 
-    /* Animations */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Responsive Styles */
     @media (max-width: 768px) {
-      .menu-toggle {
+      nav {
+        display: none;
+      }
+
+      .hamburger {
         display: flex;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        flex-direction: column;
-        background: var(--bg);
-        width: 75%;
-        height: 100vh;
-        padding: 5rem 2rem;
-        transition: right 0.4s ease;
-        box-shadow: -6px 0 18px rgba(0, 0, 0, 0.2);
-        z-index: 999;
-      }
-
-      .nav-links.active {
-        right: 0;
-      }
-
-      nav a {
-        margin: 1rem 0;
-        font-size: 1.3rem;
-      }
-
-      .theme-toggle {
-        margin-top: 2rem;
-      }
-
-      .menu-toggle.open span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-
-      .menu-toggle.open span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .menu-toggle.open span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="logo">VRATUS™</div>
-    <div class="menu-toggle" onclick="toggleMenu(this)">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <nav>
-      <div class="nav-links" id="nav-links">
-        <a href="#about">About</a>
-        <a href="#product">Product</a>
-        <a href="#vision">Vision</a>
-        <a href="#founder">Founder</a>
-        <a href="#contact">Contact</a>
-        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-      </div>
-    </nav>
-  </header>
+<header>
+  <div class="logo">VRATUS™</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#vision">Vision</a>
+    <a href="#founder">Founder</a>
+    <a href="#product">Product</a>
+    <a href="#contact">Contact</a>
+    <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
+  </nav>
+  <div class="hamburger" onclick="toggleMenu(this)">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Rugged Luxury Elegance</h1>
-    <p>Discover the perfect fusion of durability and refined craftsmanship with VRATUS™ watches.</p>
-  </section>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#vision">Vision</a>
+  <a href="#founder">Founder</a>
+  <a href="#product">Product</a>
+  <a href="#contact">Contact</a>
+</div>
 
-  <!-- About Section -->
-  <section class="about" id="about">
-    <h2>About VRATUS™</h2>
-    <p>At VRATUS™, we believe in creating watches that embody rugged luxury elegance. Each timepiece is crafted with precision, inspired by nature’s textures and designed for those who appreciate strength with sophistication. Our mission is to offer premium quality at accessible prices, blending heritage craftsmanship with modern innovation.</p>
+<section class="hero">
+  <h1>Rugged Luxury Elegance</h1>
+  <p>Crafted for those who appreciate strength, precision, and timeless sophistication.</p>
+</section>
 
-::contentReference[oaicite:0]{index=0}
- 
+<section id="about">
+  <h2>About VRATUS™</h2>
+  <p>VRATUS™ represents a blend of rugged design and classic luxury. Inspired by the intricate textures of nature and the precision of fine craftsmanship, we aim to redefine what it means to own a luxury watch. Our watches are built to endure and designed to inspire.</p>
+</section>
+
+<section id="vision">
+  <h2>Our Vision & Goal</h2>
+  <p>We envision VRATUS™ as a symbol of resilience and refined taste. Our goal is to offer exceptional timepieces that combine durability with elegant artistry—luxury for the modern adventurer, without compromise.</p>
+</section>
+
+<section id="founder">
+  <h2>Founder’s Note</h2>
+  <p>Hi, I’m Ronak Patel, the founder of VRATUS™. My passion for horology and fine detail inspired the birth of this brand. Every VRATUS™ timepiece carries my personal vision—to create watches that not only tell time, but tell a story. A story of passion, perfection, and timeless elegance.</p>
+  <p>Email: <a href="mailto:patelronak1514@gmail.com">patelronak1514@gmail.com</a></p>
+</section>
+
+<section class="product" id="product">
+  <h2>Signature Watch</h2>
+  <img src="https://i.pinimg.com/originals/7c/31/c9/7c31c9fded8761c68c8fa4a23a23afc9.jpg" alt="VRATUS Watch" />
+</section>
+
+<section class="contact" id="contact">
+  <h2>Contact Us</h2>
+  <form onsubmit="event.preventDefault(); alert('Thank you for reaching out!');">
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <textarea rows="4" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  &copy; 2025 VRATUS™. All Rights Reserved.
+</footer>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("vratus-theme", document.body.classList.contains("dark") ? "dark" : "light");
+  }
+
+  function toggleMenu(icon) {
+    document.getElementById('mobileMenu').classList.toggle('show');
+    icon.classList.toggle("open");
+  }
+
+  window.onload = () => {
+    if (localStorage.getItem("vratus-theme") === "dark") {
+      document.body.classList.add("dark");
+    }
+  };
+</script>
+
+</body>
+</html>
