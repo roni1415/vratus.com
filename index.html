@@ -1,326 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>VRATUS™ - Rugged Luxury Watches</title>
-<style>
-  :root {
-  --deep-blue: #002855;
-  --maroon-red: #7b112b;
-  --deep-green: #004d40;
-  --light-bg: #fdfdfc;
-  --dark-bg: #1a1a1a;
-  --light-text: #2a2a2a;
-  --dark-text: #f0f0f0;
-  --primary-color: var(--deep-blue);
-  --secondary-color: var(--maroon-red);
-  --accent-color: var(--deep-green);
-}
-html {
-    scroll-behavior: smooth;
-  }
-  
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VRATUS™ – Classic Rugged Luxury</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    :root {
+      --light-bg: #fdfaf6;
+      --dark-bg: #121212;
+      --light-text: #2a2a2a;
+      --dark-text: #eaeaea;
+      --primary: #002855;
+      --secondary: #7b112b;
+      --accent: #004d40;
+    }
 
-body {
-  font-family: 'Georgia', serif;
-  background: var(--light-bg);
-  color: var(--light-text);
-  line-height: 1.6;
-  transition: background 0.4s ease, color 0.4s ease;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body.dark {
-  background: var(--dark-bg);
-  color: var(--dark-text);
-}
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--light-bg);
+      color: var(--light-text);
+      transition: background 0.4s ease, color 0.4s ease;
+      padding: 0;
+      line-height: 1.7;
+    }
 
-a {
-  color: var(--secondary-color);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-a:hover {
-  color: var(--accent-color);
-}
+    body.dark {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
 
-/* HEADER & NAV */
-header {
-  background: var(--primary-color);
-  color: white;
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: background 0.3s ease;
-}
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
 
-header h1 {
-  font-size: 2rem;
-  letter-spacing: 3px;
-  font-weight: normal;
-}
+    header h1 {
+      font-size: 2rem;
+      letter-spacing: 3px;
+    }
 
-nav.desktop-nav {
-  display: flex;
-  gap: 1.8rem;
-  transition: all 0.3s ease;
-}
+    .theme-toggle {
+      background: transparent;
+      border: 2px solid white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, transform 0.4s ease;
+    }
 
-nav.desktop-nav a {
-  font-size: 1rem;
-  font-weight: 500;
-  color: white;
-  position: relative;
-  transition: color 0.3s;
-}
+    .theme-toggle:hover {
+      background: var(--accent);
+      transform: rotate(180deg);
+    }
 
-nav.desktop-nav a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: var(--accent-color);
-  transition: width 0.3s ease;
-}
+    main {
+      padding: 2rem 1.5rem;
+      max-width: 900px;
+      margin: auto;
+    }
 
-nav.desktop-nav a:hover::after {
-  width: 100%;
-}
+    section {
+      margin-bottom: 3rem;
+    }
 
-/* Hamburger menu */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-.hamburger div {
-  width: 26px;
-  height: 3px;
-  background: white;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-.hamburger.active div:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.active div:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active div:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
+    section h2 {
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 0.2rem;
+    }
 
-/* Mobile nav */
-nav.mobile-nav {
-  position: fixed;
-  top: 0;
-  right: -250px;
-  width: 250px;
-  height: 100%;
-  background: var(--primary-color);
-  display: flex;
-  flex-direction: column;
-  padding-top: 5rem;
-  gap: 2rem;
-  transition: right 0.3s ease;
-  z-index: 999;
-}
-nav.mobile-nav.show {
-  right: 0;
-}
-nav.mobile-nav a {
-  color: white;
-  font-size: 1.2rem;
-  padding-left: 2rem;
-  font-weight: bold;
-}
-nav.mobile-nav a:hover {
-  color: var(--accent-color);
-}
+    section p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
 
-/* THEME TOGGLE */
-.theme-toggle {
-  background: var(--light-bg);
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.theme-toggle:hover {
-  background: var(--accent-color);
-  color: white;
-  transform: rotate(180deg);
-}
+    .hero-image {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      margin: 2rem 0;
+    }
 
-/* Media Query */
-@media (max-width: 768px) {
-  nav.desktop-nav {
-    display: none;
-  }
-  .hamburger {
-    display: flex;
-  }
-}
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
 
-/* Subtle Section Styling */
-section h2 {
-  font-family: 'Georgia', serif;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: var(--secondary-color);
-  border-bottom: 2px solid var(--accent-color);
-  display: inline-block;
-  padding-bottom: 0.2rem;
-}
-</style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1>VRATUS™</h1>
-  <nav class="desktop-nav">
-    <a href="#about">About</a>
-    <a href="#founder">Founder</a>
-    <a href="#vision">Vision</a>
-    <a href="#goal">Goal</a>
-    <a href="#brands">Brands</a>
-    <a href="#product">Product</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <button class="theme-toggle" aria-label="Toggle Theme">🌙</button>
-  <div class="hamburger" tabindex="0" aria-label="Toggle Menu" role="button" aria-expanded="false">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-</header>
+  <header>
+    <h1>VRATUS™</h1>
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle Theme">🌙</button>
+  </header>
 
-<nav class="mobile-nav" aria-hidden="true">
-  <a href="#about">About</a>
-  <a href="#founder">Founder</a>
-  <a href="#vision">Vision</a>
-  <a href="#goal">Goal</a>
-  <a href="#brands">Brands</a>
-  <a href="#product">Product</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <main>
+    <img class="hero-image" src="https://imgs.search.brave.com/xV39q-PAWm7JxVG66Cbvk0WpOzy6Uz5jXUZfboEHwNA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/b3JpZ2luYWxncmFp/bi5jb20vY2RuL3No/b3AvZmlsZXMvV2hp/c2tleV9CbGFja19S/dWdnZWRfQXV0b19X/RUIucG5nP3Y9MTY5/NzQ4MDQ1NSZ3aWR0/aD01MzM" alt="Classic Watch" />
 
-<main>
-  <section id="about">
-    <h2>About VRATUS™</h2>
-    <p>VRATUS™ stands for rugged luxury elegance — classic watches crafted for the modern adventurer who values both style and substance. Our designs are inspired by nature, strength, and timeless craftsmanship.</p>
-  </section>
+    <section>
+      <h2>About VRATUS™</h2>
+      <p>VRATUS™ stands for timeless rugged elegance — classic watches crafted for the modern adventurer who values both style and substance.</p>
+    </section>
 
-  <section id="founder">
-    <h2>Founder Story</h2>
-    <p>Ronak founded VRATUS™ with a vision to create watches that represent rugged luxury — combining durability with classic elegance. Inspired by nature and timeless design, every VRATUS™ timepiece is crafted to be your lifelong companion.</p>
-  </section>
+    <section>
+      <h2>Philosophy</h2>
+      <p>Inspired by nature, built with precision. Our collections balance durability with vintage charm — every watch is a statement of strength and taste.</p>
+    </section>
 
-  <section id="vision">
-    <h2>Our Vision</h2>
-    <p>To redefine affordable luxury watches by delivering exceptional quality, unique design, and unmatched durability, empowering our customers to express their bold and sophisticated style.</p>
-  </section>
-  <section id="goal">
-    <h2>Our Goal</h2>
-    <p>To build a globally recognized brand that balances exquisite craftsmanship with affordability, focusing on customer satisfaction, innovation, and sustainability.</p>
-  </section>
+    <section>
+      <h2>Craftsmanship</h2>
+      <p>Each piece is a fusion of heritage design and robust performance — watches that feel at home in both boardrooms and mountains.</p>
+    </section>
+  </main>
 
-  <section id="brands">
-    <h2>Our Brands</h2>
-    <p>VRATUS™ offers collections that fuse nature-inspired textures with modern watchmaking techniques. Our current and upcoming lines include:</p>
-    <ul>
-      <li><strong>Vortex Collection:</strong> Textured dials inspired by natural elements and Grand Seiko designs.</li>
-      <li><strong>Terra Collection:</strong> Rugged outdoor watches for explorers and adventurers.</li>
-      <li><strong>Elegance Line:</strong> Slim dress watches with classic aesthetics and modern durability.</li>
-    </ul>
-  </section>
+  <footer>
+    &copy; 2025 VRATUS™. All rights reserved.
+  </footer>
 
-  <section id="product" class="product">
-    <h2>Featured Product</h2>
-    <p>Introducing the VRATUS™ Vortex Hybrid — a seamless blend of dress and diver watch features with a textured dial inspired by nature’s finest elements.</p>
-    <img src="https://images.unsplash.com/photo-1518546305921-4097c7c65099?auto=format&fit=crop&w=800&q=80" alt="VRATUS Vortex Hybrid Watch" />
-  </section>
+  <script>
+    const themeBtn = document.getElementById('themeBtn');
+    const body = document.body;
 
-  <section id="contact">
-  <h2>Contact Us</h2>
-  <form id="contactForm" action="https://formspree.io/f/mnndwyvk" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name" />
-    <input type="email" name="_replyto" placeholder="Your Email" required aria-label="Your Email" />
-    <textarea name="message" rows="5" placeholder="Your Message" required aria-label="Your Message"></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
-
-</main>
-
-<footer>
-  &copy; 2025 VRATUS™. All rights reserved.
-</footer>
-
-<script>
-  // Hamburger menu toggle
-  const hamburger = document.querySelector('.hamburger');
-  const mobileNav = document.querySelector('nav.mobile-nav');
-
-  hamburger.addEventListener('click', () => {
-    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', String(!isExpanded));
-    hamburger.classList.toggle('active');
-    mobileNav.classList.toggle('show');
-    mobileNav.setAttribute('aria-hidden', String(isExpanded));
-  });
-
-  // Close mobile nav on link click
-  document.querySelectorAll('nav.mobile-nav a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
-      mobileNav.classList.remove('show');
-      mobileNav.setAttribute('aria-hidden', 'true');
+    themeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      themeBtn.textContent = body.classList.contains('dark') ? '☀️' : '🌙';
+      localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
     });
-  });
 
-  // Theme toggle
-  const themeToggle = document.querySelector('.theme-toggle');
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    if(document.body.classList.contains('dark')) {
-      themeToggle.textContent = '☀️';
-      localStorage.setItem('theme', 'dark');
-    } else {
-      themeToggle.textContent = '🌙';
-      localStorage.setItem('theme', 'light');
-    }
-  });
-
-  // Preserve theme on reload
-  window.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme');
-    if(savedTheme === 'dark') {
-      document.body.classList.add('dark');
-      themeToggle.textContent = '☀️';
-    }
-  });
-</script>
+    // Restore saved theme
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        body.classList.add('dark');
+        themeBtn.textContent = '☀️';
+      }
+    });
+  </script>
 
 </body>
 </html>
