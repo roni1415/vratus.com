@@ -76,6 +76,11 @@
       user-select: none;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
     nav a {
       margin-left: 2rem;
       font-size: 1.1rem;
@@ -83,18 +88,47 @@
 
     .theme-toggle {
       margin-left: 2rem;
-      padding: 0.4rem 0.8rem;
-      border: 1px solid var(--wine-red);
-      background: transparent;
-      color: var(--text);
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease;
+      position: relative;
+      width: 50px;
+      height: 26px;
     }
 
-    .theme-toggle:hover {
-      background: var(--wine-red);
-      color: var(--soft-cream);
+    .theme-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--deep-blue);
+      transition: 0.4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: var(--soft-cream);
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--wine-red);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(24px);
     }
 
     .hero {
@@ -121,7 +155,7 @@
       opacity: 0;
     }
 
-    .about, .contact {
+    .about, .contact, .founder {
       max-width: 850px;
       margin: 3rem auto;
       background: var(--section-bg);
@@ -130,13 +164,13 @@
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     }
 
-    .about h2, .contact h2 {
+    .about h2, .contact h2, .founder h2 {
       color: var(--wine-red);
       font-size: 2rem;
       margin-bottom: 1rem;
     }
 
-    .about p, .contact p {
+    .about p, .contact p, .founder p {
       font-size: 1.1rem;
     }
 
@@ -214,7 +248,7 @@
       .hero h1 {
         font-size: 2.6rem;
       }
-      .about, .contact {
+      .about, .contact, .founder {
         margin: 2rem 1rem;
         padding: 2rem 1.5rem;
       }
@@ -228,8 +262,12 @@
   <nav>
     <a href="#about">About</a>
     <a href="#product">Product</a>
+    <a href="#founder">Founder</a>
     <a href="#contact">Contact</a>
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <label class="theme-toggle">
+      <input type="checkbox" id="theme-switch" />
+      <span class="slider"></span>
+    </label>
   </nav>
 </header>
 
@@ -244,36 +282,6 @@
 </section>
 
 <section class="product" id="product">
-  <img src="https://i.pinimg.com/originals/7c/31/c9/7c31c9fded8761c68c8fa4a23a23afc9.jpg?auto=format&fit=crop&w=400&q=80" alt="VRATUS Watch" />
-</section>
-
-<section class="contact" id="contact">
-  <h2>Contact Us</h2>
-  <form onsubmit="event.preventDefault(); alert('Thank you for reaching out to VRATUS™!');">
-    <input type="text" placeholder="Your Name" required />
-    <input type="email" placeholder="Your Email" required />
-    <textarea rows="4" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
-
-<footer>
-  &copy; 2025 VRATUS™. All rights reserved.
-</footer>
-
-<script>
-  function toggleTheme() {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("vratus-theme", document.body.classList.contains("dark") ? "dark" : "light");
-  }
-
-  // On load, apply saved theme
-  window.onload = () => {
-    if (localStorage.getItem("vratus-theme") === "dark") {
-      document.body.classList.add("dark");
-    }
-  };
-</script>
-
-</body>
-</html>
+  <img src="https://i.pinimg.com/originals/7c/31/c9/7c31c9fded8761c68c8fa4a23a23afc9.jpg" alt="VRATUS Watch"
+::contentReference[oaicite:29]{index=29}
+ 
