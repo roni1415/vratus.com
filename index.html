@@ -1,296 +1,455 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VRATUS™ - Rugged Luxury Elegance</title>
-  <style>
-    :root {
-      --deep-blue: #0d1b2a;
-      --wine-red: #6e0b14;
-      --deep-green: #1f3a3d;
-      --soft-cream: #f9f7f1;
-      --warm-beige: #e6ded1;
-      --accent-red: #a32e2e;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VRATUS™ - Rugged Luxury Elegance</title>
+<style>
+  /* VRATUS™ Color Palette */
+  :root {
+    --deep-blue: #0d1b2a;
+    --wine-red: #6e0b14;
+    --deep-green: #1f3a3d;
+    --soft-cream: #f9f7f1;
+    --warm-beige: #e6ded1;
+    --dark-charcoal: #2c2c2c;
+    --accent-red: #a32e2e;
 
-      --bg: var(--soft-cream);
-      --text: var(--deep-blue);
-      --header-bg: var(--warm-beige);
-      --section-bg: var(--warm-beige);
-      --footer-bg: var(--deep-green);
-      --footer-text: var(--soft-cream);
-    }
+    --bg: var(--soft-cream);
+    --text: var(--deep-blue);
+    --section-bg: var(--warm-beige);
+    --header-bg: var(--warm-beige);
+    --footer-bg: var(--deep-green);
+    --footer-text: var(--warm-beige);
+  }
 
-    body.dark {
-      --bg: #0f1217;
-      --text: #e0e0e0;
-      --header-bg: #12161c;
-      --section-bg: #1a1d23;
-      --footer-bg: #0d1b2a;
-      --footer-text: #e6ded1;
-    }
+  body.dark {
+    --bg: #0f1217;
+    --text: #e0e0e0;
+    --section-bg: #1a1d23;
+    --header-bg: #12161c;
+    --footer-bg: #0d1b2a;
+    --footer-text: #e6ded1;
+  }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    body {
-      font-family: 'Georgia', serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: background 0.4s ease, color 0.4s ease;
-    }
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    transition: background 0.4s, color 0.4s;
+  }
 
-    header {
-      background: var(--header-bg);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      border-bottom: 2px solid var(--wine-red);
-    }
+  a {
+    color: var(--wine-red);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
 
-    .logo {
-      font-weight: bold;
-      font-size: 1.8rem;
-      color: var(--text);
-      letter-spacing: 2px;
-    }
+  a:hover {
+    color: var(--accent-red);
+  }
 
-    nav {
-      display: flex;
-      align-items: center;
-    }
+  /* HEADER AND NAVBAR */
+  header {
+    background: var(--header-bg);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--wine-red);
+    user-select: none;
+  }
 
-    nav a {
-      margin-left: 1.5rem;
-      text-decoration: none;
-      font-size: 1rem;
-      color: var(--text);
-      font-weight: 600;
-      transition: color 0.3s;
-    }
+  .logo {
+    font-weight: 900;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: var(--text);
+  }
 
-    nav a:hover {
-      color: var(--accent-red);
-    }
+  nav.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
 
-    .theme-toggle {
-      margin-left: 1.5rem;
-      padding: 0.4rem 0.8rem;
-      background: transparent;
-      border: 2px solid var(--wine-red);
-      color: var(--text);
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+  nav.desktop-nav a {
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
 
-    .theme-toggle:hover {
-      background: var(--wine-red);
-      color: var(--soft-cream);
-    }
+  /* THEME TOGGLE BUTTON */
+  .theme-toggle {
+    padding: 0.4rem 1rem;
+    border: 1.8px solid var(--wine-red);
+    background: transparent;
+    color: var(--text);
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'Georgia', serif;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
 
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      margin-left: 1.5rem;
-    }
+  .theme-toggle:hover {
+    background-color: var(--wine-red);
+    color: var(--soft-cream);
+  }
 
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background: var(--text);
-      margin: 4px;
-      transition: 0.4s;
-    }
+  /* HAMBURGER MENU FOR MOBILE */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    width: 28px;
+    height: 24px;
+    justify-content: center;
+  }
 
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      background: var(--section-bg);
-      position: absolute;
-      top: 70px;
-      right: 0;
-      width: 200px;
-      border-left: 2px solid var(--wine-red);
-      padding: 1rem;
-      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    }
+  .hamburger div {
+    background-color: var(--text);
+    height: 3.5px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
 
-    .mobile-menu a {
-      margin: 0.5rem 0;
-    }
+  /* MOBILE NAVIGATION SIDEBAR */
+  nav.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    height: 100vh;
+    width: 280px;
+    background: var(--section-bg);
+    flex-direction: column;
+    padding-top: 4rem;
+    gap: 1.8rem;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+    transition: right 0.4s ease;
+    z-index: 1100;
+  }
 
-    .show {
-      display: flex;
-    }
+  nav.mobile-nav.show {
+    right: 0;
+  }
 
+  nav.mobile-nav a {
+    font-size: 1.3rem;
+    padding-left: 1.5rem;
+    color: var(--deep-blue);
+  }
+
+  nav.mobile-nav a:hover {
+    color: var(--wine-red);
+  }
+
+  nav.mobile-nav .theme-toggle {
+    margin-left: 1.5rem;
+  }
+
+  /* TRANSFORM HAMBURGER TO X */
+  .hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.active div:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--section-bg), var(--bg));
+    padding: 6rem 1rem 7rem;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    animation: fadeInDown 1s ease-out forwards;
+    opacity: 0;
+  }
+
+  .hero p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 850px;
+    margin: 3rem auto;
+    background: var(--section-bg);
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: background-color 0.4s ease;
+  }
+
+  section h2 {
+    color: var(--wine-red);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--wine-red);
+    padding-bottom: 0.25rem;
+  }
+
+  section p {
+    font-size: 1.15rem;
+    margin-bottom: 1.2rem;
+  }
+
+  /* FORM */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+
+  input, textarea {
+    padding: 1rem 1.1rem;
+    font-size: 1rem;
+    border: 2px solid var(--deep-green);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    resize: vertical;
+    transition: border-color 0.3s ease;
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--wine-red);
+    box-shadow: 0 0 8px var(--wine-red);
+  }
+
+  button[type="submit"] {
+    background: var(--wine-red);
+    color: var(--soft-cream);
+    border: none;
+    padding: 1rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button[type="submit"]:hover {
+    background: var(--accent-red);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    user-select: none;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
     section {
-      padding: 4rem 1.5rem;
-      max-width: 1000px;
-      margin: auto;
+      margin: 2rem 1.2rem;
+      padding: 2rem 1.8rem;
     }
+  }
 
-    h1, h2 {
-      color: var(--wine-red);
-    }
-
-    .hero {
-      text-align: center;
-      padding-top: 5rem;
-    }
-
+  @media (max-width: 650px) {
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
     }
-
-    .hero p {
-      margin-top: 1rem;
-      font-style: italic;
-      font-size: 1.2rem;
+    nav.desktop-nav {
+      gap: 1rem;
     }
+  }
 
-    .product img {
-      width: 300px;
-      max-width: 90%;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      transition: transform 0.4s ease;
+  @media (max-width: 520px) {
+    nav.desktop-nav {
+      display: none;
     }
-
-    .product img:hover {
-      transform: scale(1.05);
+    .hamburger {
+      display: flex;
     }
-
-    .contact input, .contact textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin: 0.5rem 0;
-      border: 2px solid var(--deep-green);
-      border-radius: 6px;
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    .contact button {
-      background: var(--wine-red);
-      color: var(--soft-cream);
-      padding: 0.8rem 1.2rem;
-      border: none;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    footer {
-      background: var(--footer-bg);
-      color: var(--footer-text);
-      text-align: center;
-      padding: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
 <header>
   <div class="logo">VRATUS™</div>
-  <nav>
+
+  <nav class="desktop-nav">
     <a href="#about">About</a>
-    <a href="#vision">Vision</a>
     <a href="#founder">Founder</a>
-    <a href="#product">Product</a>
+    <a href="#aim">Aim</a>
+    <a href="#vision">Vision</a>
+    <a href="#passion">Passion</a>
+    <a href="#concept">Concept</a>
     <a href="#contact">Contact</a>
-    <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
+    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
   </nav>
-  <div class="hamburger" onclick="toggleMenu(this)">
+
+  <div class="hamburger" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
     <div></div>
     <div></div>
     <div></div>
   </div>
 </header>
 
-<div class="mobile-menu" id="mobileMenu">
+<nav class="mobile-nav" aria-hidden="true">
   <a href="#about">About</a>
-  <a href="#vision">Vision</a>
   <a href="#founder">Founder</a>
-  <a href="#product">Product</a>
+  <a href="#aim">Aim</a>
+  <a href="#vision">Vision</a>
+  <a href="#passion">Passion</a>
+  <a href="#concept">Concept</a>
   <a href="#contact">Contact</a>
-</div>
+  <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+</nav>
 
-<section class="hero">
-  <h1>Rugged Luxury Elegance</h1>
-  <p>Crafted for those who appreciate strength, precision, and timeless sophistication.</p>
-</section>
+<main>
+  <section class="hero" id="about">
+    <h1>VRATUS™</h1>
+    <p>Where Rugged Meets Luxury — A Classic Vision for Timeless Elegance.</p>
+  </section>
 
-<section id="about">
-  <h2>About VRATUS™</h2>
-  <p>VRATUS™ represents a blend of rugged design and classic luxury. Inspired by the intricate textures of nature and the precision of fine craftsmanship, we aim to redefine what it means to own a luxury watch. Our watches are built to endure and designed to inspire.</p>
-</section>
+  <section id="founder">
+    <h2>Founder</h2>
+    <p>Ronak Patel, a passionate watch enthusiast and entrepreneur, founded VRATUS™ with the dream of crafting watches that merge rugged durability with classic luxury. His vision is rooted in delivering exceptional quality and timeless design that resonates with both the adventurer and the connoisseur.</p>
+  </section>
 
-<section id="vision">
-  <h2>Our Vision & Goal</h2>
-  <p>We envision VRATUS™ as a symbol of resilience and refined taste. Our goal is to offer exceptional timepieces that combine durability with elegant artistry—luxury for the modern adventurer, without compromise.</p>
-</section>
+  <section id="aim">
+    <h2>Brand Aim</h2>
+    <p>VRATUS™ aims to redefine the luxury watch market by offering pieces that combine robust functionality with refined aesthetics, all at an accessible price point. We believe true elegance doesn’t have to compromise durability or affordability.</p>
+  </section>
 
-<section id="founder">
-  <h2>Founder’s Note</h2>
-  <p>Hi, I’m Ronak Patel, the founder of VRATUS™. My passion for horology and fine detail inspired the birth of this brand. Every VRATUS™ timepiece carries my personal vision—to create watches that not only tell time, but tell a story. A story of passion, perfection, and timeless elegance.</p>
-  <p>Email: <a href="mailto:patelronak1514@gmail.com">patelronak1514@gmail.com</a></p>
-</section>
+  <section id="vision">
+    <h2>Vision</h2>
+    <p>To establish VRATUS™ as a globally recognized brand synonymous with rugged luxury, craftsmanship, and innovation. Our vision includes pioneering sustainable manufacturing practices while delivering unique timepieces that tell a story of passion and precision.</p>
+  </section>
 
-<section class="product" id="product">
-  <h2>Signature Watch</h2>
-  <img src="https://i.pinimg.com/originals/7c/31/c9/7c31c9fded8761c68c8fa4a23a23afc9.jpg" alt="VRATUS Watch" />
-</section>
+  <section id="passion">
+    <h2>Passion</h2>
+    <p>Every VRATUS™ watch is a labor of love. From hand-selecting premium materials to perfecting intricate details inspired by nature and heritage designs, our passion fuels every tick. We’re dedicated to creating watches that inspire and accompany you on all of life’s adventures.</p>
+  </section>
 
-<section class="contact" id="contact">
-  <h2>Contact Us</h2>
-  <form onsubmit="event.preventDefault(); alert('Thank you for reaching out!');">
-    <input type="text" placeholder="Your Name" required />
-    <input type="email" placeholder="Your Email" required />
-    <textarea rows="4" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
+  <section id="concept">
+    <h2>Concept</h2>
+    <p>Our concept blends classic watchmaking traditions with modern innovations — a hybrid of elegant dress watch sophistication and rugged dive watch functionality. VRATUS™ watches are designed to be versatile companions, perfect for both boardroom meetings and outdoor expeditions.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form action="https://formspree.io/f/xknavqwp" method="POST">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required placeholder="Your full name" />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="_replyto" required placeholder="your.email@example.com" />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
+
+            <button type="submit">Send Message</button>
+    </form>
+  </section>
+</main>
 
 <footer>
   &copy; 2025 VRATUS™. All Rights Reserved.
 </footer>
 
 <script>
-  function toggleTheme() {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("vratus-theme", document.body.classList.contains("dark") ? "dark" : "light");
+  // THEME TOGGLE LOGIC
+  const toggleButtons = document.querySelectorAll('.theme-toggle');
+  const body = document.body;
+
+  // Load saved theme from localStorage
+  if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark');
+    toggleButtons.forEach(btn => btn.textContent = '☀️');
   }
 
-  function toggleMenu(icon) {
-    document.getElementById('mobileMenu').classList.toggle('show');
-    icon.classList.toggle("open");
+  toggleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      if(body.classList.contains('dark')) {
+        btn.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        btn.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  });
+
+  // HAMBURGER MENU TOGGLE
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('nav.mobile-nav');
+
+  function toggleMobileNav() {
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', !expanded);
+    mobileNav.classList.toggle('show');
+    hamburger.classList.toggle('active');
+    mobileNav.setAttribute('aria-hidden', expanded);
   }
 
-  window.onload = () => {
-    if (localStorage.getItem("vratus-theme") === "dark") {
-      document.body.classList.add("dark");
+  hamburger.addEventListener('click', toggleMobileNav);
+  hamburger.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleMobileNav();
     }
-  };
+  });
+
+  // Close mobile nav when clicking a link
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.setAttribute('aria-expanded', false);
+      mobileNav.classList.remove('show');
+      hamburger.classList.remove('active');
+      mobileNav.setAttribute('aria-hidden', true);
+    });
+  });
 </script>
 
 </body>
 </html>
+
