@@ -46,8 +46,8 @@
 
     /* Header and Navigation */
     header {
-      background: var(--primary);
-      color: white;
+      background: #fff;
+      color: var(--primary);
       padding: 1rem 2rem;
       position: sticky;
       top: 0;
@@ -56,22 +56,45 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-weight: 600;
+      font-size: 1rem;
     }
     header h1 {
       font-size: 1.8rem;
       letter-spacing: 3px;
+      color: var(--primary);
+      user-select: none;
     }
     nav {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
+      font-weight: 500;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
     }
     nav a {
-      font-weight: bold;
-      font-size: 1rem;
+      position: relative;
+      color: var(--primary);
       padding: 0.3rem 0;
+      transition: color 0.3s ease;
     }
-    nav a:hover {
-      color: var(--accent);
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: var(--secondary);
+    }
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
     }
 
     /* Responsive Navigation */
@@ -79,22 +102,27 @@
       display: none;
       flex-direction: column;
       cursor: pointer;
+      user-select: none;
     }
     .menu-toggle span {
       width: 25px;
       height: 3px;
-      background: white;
-      margin: 4px 0;
+      background: var(--primary);
+      margin: 5px 0;
+      border-radius: 2px;
       transition: 0.4s;
     }
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
         width: 100%;
-        display: none;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
       }
       nav.active {
-        display: flex;
+        max-height: 400px; /* enough to show all */
+        opacity: 1;
       }
       .menu-toggle {
         display: flex;
@@ -104,17 +132,32 @@
     /* Theme Toggle Button */
     .theme-toggle {
       background: transparent;
-      border: 2px solid white;
-      border-radius: 20px;
-      color: white;
-      font-size: 1rem;
-      padding: 0.3rem 1rem;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      color: var(--primary);
+      font-size: 1.2rem;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      user-select: none;
     }
     .theme-toggle:hover {
       background: var(--accent);
       border-color: var(--accent);
+      color: white;
+    }
+    body.dark .theme-toggle {
+      border-color: var(--dark-text);
+      color: var(--dark-text);
+    }
+    body.dark .theme-toggle:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
     }
 
     /* Main Content */
@@ -133,6 +176,7 @@
       border-bottom: 2px solid var(--accent);
       display: inline-block;
       padding-bottom: 0.2rem;
+      user-select: none;
     }
     section p {
       font-size: 1.1rem;
@@ -147,37 +191,44 @@
       border-radius: 8px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.2);
       margin-top: 1rem;
+      user-select: none;
     }
 
     /* Contact Form */
     form {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
       margin-top: 1rem;
+      max-width: 600px;
+      width: 100%;
     }
     input, textarea {
-      padding: 0.75rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1.5px solid #ccc;
+      font-size: 1.2rem;
       font-family: inherit;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      resize: vertical;
     }
     input:focus, textarea:focus {
       outline: none;
       border-color: var(--secondary);
-      box-shadow: 0 0 5px var(--secondary);
+      box-shadow: 0 0 8px var(--secondary);
     }
     button[type="submit"] {
-      width: 150px;
+      width: 180px;
       background: var(--secondary);
       border: none;
       color: white;
       font-weight: bold;
-      font-size: 1rem;
-      border-radius: 5px;
+      font-size: 1.2rem;
+      border-radius: 8px;
       cursor: pointer;
       transition: background 0.3s ease;
+      align-self: flex-start;
+      padding: 0.8rem 1rem;
     }
     button[type="submit"]:hover {
       background: var(--accent);
@@ -196,6 +247,7 @@
       background: var(--primary);
       color: white;
       font-size: 0.9rem;
+      user-select: none;
     }
   </style>
 </head>
@@ -203,12 +255,12 @@
 
 <header>
   <h1>VRATUS™</h1>
-  <div class="menu-toggle" id="menu-toggle">
+  <div class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" role="button" tabindex="0">
     <span></span>
     <span></span>
     <span></span>
   </div>
-  <nav id="navbar">
+  <nav id="navbar" role="navigation" aria-label="Primary Navigation">
     <a href="#about">About</a>
     <a href="#founder">Founder</a>
     <a href="#vision">Vision</a>
@@ -217,7 +269,7 @@
     <a href="#product">Product</a>
     <a href="#contact">Contact</a>
   </nav>
-  <button class="theme-toggle" id="theme-toggle">Dark</button>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark theme">🌞</button>
 </header>
 
 <main>
@@ -229,7 +281,7 @@
   <section id="founder">
     <h2>Founder Story</h2>
     <p>Ronak founded VRATUS™ with a vision to create watches that represent rugged luxury — combining durability with classic elegance. Inspired by nature and timeless design, every VRATUS™ timepiece is crafted to be your lifelong companion.</p>
-    <p>Email: <a href="mailto:ronak@vratus.com">ronak@vratus.com</a></p>
+    <p>Email: <a href="mailto:patelronak1514@gmail.com">patelronak1514@gmail.com</a></p>
   </section>
 
   <section id="vision">
@@ -263,7 +315,57 @@
     <form action="https://formspree.io/f/mnndwyvk" method="POST">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="_replyto" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button
-::contentReference[oaicite:16]{index=16}
- 
+      <textarea name="message" rows="7" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 VRATUS™. All rights reserved.
+</footer>
+
+<script>
+  // Navbar toggle for mobile
+  const menuToggle = document.getElementById('menu-toggle');
+  const navbar = document.getElementById('navbar');
+
+  menuToggle.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+  });
+
+  // Also enable toggle with keyboard (Enter/Space) for accessibility
+  menuToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      navbar.classList.toggle('active');
+    }
+  });
+
+  // Theme toggle logic with emoji switch
+  const themeToggleBtn = document.getElementById('theme-toggle');
+
+  function setTheme(theme) {
+    if (theme === 'dark') {
+      document.body.classList.add('dark');
+      themeToggleBtn.textContent = '🌙';
+    } else {
+      document.body.classList.remove('dark');
+      themeToggleBtn.textContent = '🌞';
+    }
+  }
+
+  // Initialize theme based on stored preference or default light
+  const storedTheme = localStorage.getItem('vratus-theme') || 'light';
+  setTheme(storedTheme);
+
+  themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('vratus-theme', newTheme);
+  });
+</script>
+
+</body>
+</html>
