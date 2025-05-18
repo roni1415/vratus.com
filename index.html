@@ -3,165 +3,92 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>VRATUS™ - Rugged Luxury Elegance</title>
+<title>VRATUS™ - Rugged Luxury Watches</title>
 <style>
-  /* VRATUS™ Color Palette */
+  /* VRATUS™ color palette and base styles */
   :root {
-    --deep-blue: #0d1b2a;
-    --wine-red: #6e0b14;
-    --deep-green: #1f3a3d;
-    --soft-cream: #f9f7f1;
-    --warm-beige: #e6ded1;
-    --dark-charcoal: #2c2c2c;
-    --accent-red: #a32e2e;
-
-    --bg: var(--soft-cream);
-    --text: var(--deep-blue);
-    --section-bg: var(--warm-beige);
-    --header-bg: var(--warm-beige);
-    --footer-bg: var(--deep-green);
-    --footer-text: var(--warm-beige);
+    --deep-blue: #002855;
+    --maroon-red: #7b112b;
+    --deep-green: #004d40;
+    --light-bg: #f9f9f9;
+    --dark-bg: #121212;
+    --light-text: #222;
+    --dark-text: #eee;
+    --primary-color: var(--deep-blue);
+    --secondary-color: var(--maroon-red);
+    --accent-color: var(--deep-green);
   }
 
-  body.dark {
-    --bg: #0f1217;
-    --text: #e0e0e0;
-    --section-bg: #1a1d23;
-    --header-bg: #12161c;
-    --footer-bg: #0d1b2a;
-    --footer-text: #e6ded1;
-  }
-
+  /* Reset */
   * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
-
   body {
     font-family: 'Georgia', serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    transition: background 0.4s, color 0.4s;
+    background: var(--light-bg);
+    color: var(--light-text);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
   }
-
+  body.dark {
+    background: var(--dark-bg);
+    color: var(--dark-text);
+  }
   a {
-    color: var(--wine-red);
+    color: var(--secondary-color);
     text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
   }
-
   a:hover {
-    color: var(--accent-red);
+    text-decoration: underline;
   }
 
-  /* HEADER AND NAVBAR */
   header {
-    background: var(--header-bg);
+    background: var(--primary-color);
+    color: white;
     padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 2px solid var(--wine-red);
-    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .logo {
-    font-weight: 900;
-    font-size: 2rem;
-    letter-spacing: 4px;
-    color: var(--text);
+  header h1 {
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
   }
 
   nav.desktop-nav {
     display: flex;
-    align-items: center;
     gap: 2rem;
   }
-
   nav.desktop-nav a {
-    font-size: 1.1rem;
-    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.3rem 0;
+  }
+  nav.desktop-nav a:hover {
+    color: var(--accent-color);
   }
 
-  /* THEME TOGGLE BUTTON */
-  .theme-toggle {
-    padding: 0.4rem 1rem;
-    border: 1.8px solid var(--wine-red);
-    background: transparent;
-    color: var(--text);
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-    font-family: 'Georgia', serif;
-    position: relative;
-    overflow: hidden;
-    transition: background-color 0.4s ease, color 0.4s ease;
-  }
-
-  .theme-toggle:hover {
-    background-color: var(--wine-red);
-    color: var(--soft-cream);
-  }
-
-  /* HAMBURGER MENU FOR MOBILE */
+  /* Hamburger menu - hidden on desktop */
   .hamburger {
     display: none;
     flex-direction: column;
-    cursor: pointer;
     gap: 5px;
-    width: 28px;
-    height: 24px;
-    justify-content: center;
+    cursor: pointer;
   }
-
   .hamburger div {
-    background-color: var(--text);
-    height: 3.5px;
-    border-radius: 3px;
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
     transition: all 0.3s ease;
   }
-
-  /* MOBILE NAVIGATION SIDEBAR */
-  nav.mobile-nav {
-    position: fixed;
-    top: 0;
-    right: -280px;
-    height: 100vh;
-    width: 280px;
-    background: var(--section-bg);
-    flex-direction: column;
-    padding-top: 4rem;
-    gap: 1.8rem;
-    box-shadow: -4px 0 20px rgba(0,0,0,0.3);
-    transition: right 0.4s ease;
-    z-index: 1100;
-  }
-
-  nav.mobile-nav.show {
-    right: 0;
-  }
-
-  nav.mobile-nav a {
-    font-size: 1.3rem;
-    padding-left: 1.5rem;
-    color: var(--deep-blue);
-  }
-
-  nav.mobile-nav a:hover {
-    color: var(--wine-red);
-  }
-
-  nav.mobile-nav .theme-toggle {
-    margin-left: 1.5rem;
-  }
-
-  /* TRANSFORM HAMBURGER TO X */
   .hamburger.active div:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
   }
@@ -169,137 +96,129 @@
     opacity: 0;
   }
   .hamburger.active div:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 
-  /* HERO */
-  .hero {
-    background: linear-gradient(135deg, var(--section-bg), var(--bg));
-    padding: 6rem 1rem 7rem;
-    text-align: center;
+  /* Mobile nav */
+  nav.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    padding-top: 5rem;
+    gap: 2rem;
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+  nav.mobile-nav.show {
+    right: 0;
+  }
+  nav.mobile-nav a {
+    color: white;
+    font-size: 1.2rem;
+    padding-left: 2rem;
+    font-weight: bold;
+  }
+  nav.mobile-nav a:hover {
+    color: var(--accent-color);
   }
 
-  .hero h1 {
-    font-size: 3.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    animation: fadeInDown 1s ease-out forwards;
-    opacity: 0;
+  /* Theme toggle button */
+  .theme-toggle {
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 4px;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+  }
+  .theme-toggle:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
   }
 
-  .hero p {
-    font-size: 1.3rem;
-    max-width: 700px;
-    margin: 0 auto;
-    font-style: italic;
-    animation: fadeInUp 1s ease-out forwards;
-    animation-delay: 0.4s;
-    opacity: 0;
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
   }
 
-  /* SECTIONS */
   section {
-    max-width: 850px;
-    margin: 3rem auto;
-    background: var(--section-bg);
-    padding: 2.5rem 3rem;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    transition: background-color 0.4s ease;
+    margin-bottom: 3rem;
   }
 
   section h2 {
-    color: var(--wine-red);
+    font-family: 'Georgia', serif;
     font-size: 2rem;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid var(--wine-red);
-    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 0.2rem;
   }
 
   section p {
-    font-size: 1.15rem;
-    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    color: inherit;
   }
 
-  /* FORM */
+  /* Product section */
+  .product img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    margin-top: 1rem;
+  }
+
+  /* Contact form */
   form {
     display: flex;
     flex-direction: column;
-    gap: 1.3rem;
+    gap: 1rem;
   }
-
   input, textarea {
-    padding: 1rem 1.1rem;
+    padding: 0.7rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
     font-size: 1rem;
-    border: 2px solid var(--deep-green);
-    border-radius: 8px;
-    background: var(--bg);
-    color: var(--text);
-    resize: vertical;
-    transition: border-color 0.3s ease;
+    font-family: inherit;
   }
-
   input:focus, textarea:focus {
     outline: none;
-    border-color: var(--wine-red);
-    box-shadow: 0 0 8px var(--wine-red);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color);
   }
-
   button[type="submit"] {
-    background: var(--wine-red);
-    color: var(--soft-cream);
+    width: 150px;
+    background: var(--secondary-color);
     border: none;
-    padding: 1rem;
-    font-size: 1.15rem;
-    font-weight: 700;
-    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
   }
-
   button[type="submit"]:hover {
-    background: var(--accent-red);
+    background: var(--accent-color);
   }
 
-  /* FOOTER */
   footer {
-    background: var(--footer-bg);
-    color: var(--footer-text);
     text-align: center;
-    padding: 1rem 2rem;
+    padding: 1.5rem 0;
+    background: var(--primary-color);
+    color: white;
     font-size: 0.9rem;
-    letter-spacing: 0.5px;
-    user-select: none;
   }
 
-  /* ANIMATIONS */
-  @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px);}
-    to { opacity: 1; transform: translateY(0);}
-  }
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px);}
-    to { opacity: 1; transform: translateY(0);}
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    section {
-      margin: 2rem 1.2rem;
-      padding: 2rem 1.8rem;
-    }
-  }
-
-  @media (max-width: 650px) {
-    .hero h1 {
-      font-size: 2.8rem;
-    }
-    nav.desktop-nav {
-      gap: 1rem;
-    }
-  }
-
-  @media (max-width: 520px) {
+  /* Responsive */
+  @media (max-width: 768px) {
     nav.desktop-nav {
       display: none;
     }
@@ -312,20 +231,18 @@
 <body>
 
 <header>
-  <div class="logo">VRATUS™</div>
-
+  <h1>VRATUS™</h1>
   <nav class="desktop-nav">
     <a href="#about">About</a>
     <a href="#founder">Founder</a>
-    <a href="#aim">Aim</a>
     <a href="#vision">Vision</a>
-    <a href="#passion">Passion</a>
-    <a href="#concept">Concept</a>
+    <a href="#goal">Goal</a>
+    <a href="#brands">Brands</a>
+    <a href="#product">Product</a>
     <a href="#contact">Contact</a>
-    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
   </nav>
-
-  <div class="hamburger" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
+  <button class="theme-toggle" aria-label="Toggle Theme">🌙</button>
+  <div class="hamburger" tabindex="0" aria-label="Toggle Menu" role="button" aria-expanded="false">
     <div></div>
     <div></div>
     <div></div>
@@ -335,121 +252,109 @@
 <nav class="mobile-nav" aria-hidden="true">
   <a href="#about">About</a>
   <a href="#founder">Founder</a>
-  <a href="#aim">Aim</a>
   <a href="#vision">Vision</a>
-  <a href="#passion">Passion</a>
-  <a href="#concept">Concept</a>
+  <a href="#goal">Goal</a>
+  <a href="#brands">Brands</a>
+  <a href="#product">Product</a>
   <a href="#contact">Contact</a>
-  <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
 </nav>
 
 <main>
-  <section class="hero" id="about">
-    <h1>VRATUS™</h1>
-    <p>Where Rugged Meets Luxury — A Classic Vision for Timeless Elegance.</p>
+  <section id="about">
+    <h2>About VRATUS™</h2>
+    <p>VRATUS™ stands for rugged luxury elegance — classic watches crafted for the modern adventurer who values both style and substance. Our designs are inspired by nature, strength, and timeless craftsmanship.</p>
   </section>
 
   <section id="founder">
-    <h2>Founder</h2>
-    <p>Ronak Patel, a passionate watch enthusiast and entrepreneur, founded VRATUS™ with the dream of crafting watches that merge rugged durability with classic luxury. His vision is rooted in delivering exceptional quality and timeless design that resonates with both the adventurer and the connoisseur.</p>
-  </section>
-
-  <section id="aim">
-    <h2>Brand Aim</h2>
-    <p>VRATUS™ aims to redefine the luxury watch market by offering pieces that combine robust functionality with refined aesthetics, all at an accessible price point. We believe true elegance doesn’t have to compromise durability or affordability.</p>
+    <h2>Founder Story</h2>
+    <p>Ronak founded VRATUS™ with a vision to create watches that represent rugged luxury — combining durability with classic elegance. Inspired by nature and timeless design, every VRATUS™ timepiece is crafted to be your lifelong companion.</p>
   </section>
 
   <section id="vision">
-    <h2>Vision</h2>
-    <p>To establish VRATUS™ as a globally recognized brand synonymous with rugged luxury, craftsmanship, and innovation. Our vision includes pioneering sustainable manufacturing practices while delivering unique timepieces that tell a story of passion and precision.</p>
+    <h2>Our Vision</h2>
+    <p>To redefine affordable luxury watches by delivering exceptional quality, unique design, and unmatched durability, empowering our customers to express their bold and sophisticated style.</p>
+  </section>
+  <section id="goal">
+    <h2>Our Goal</h2>
+    <p>To build a globally recognized brand that balances exquisite craftsmanship with affordability, focusing on customer satisfaction, innovation, and sustainability.</p>
   </section>
 
-  <section id="passion">
-    <h2>Passion</h2>
-    <p>Every VRATUS™ watch is a labor of love. From hand-selecting premium materials to perfecting intricate details inspired by nature and heritage designs, our passion fuels every tick. We’re dedicated to creating watches that inspire and accompany you on all of life’s adventures.</p>
+  <section id="brands">
+    <h2>Our Brands</h2>
+    <p>VRATUS™ offers collections that fuse nature-inspired textures with modern watchmaking techniques. Our current and upcoming lines include:</p>
+    <ul>
+      <li><strong>Vortex Collection:</strong> Textured dials inspired by natural elements and Grand Seiko designs.</li>
+      <li><strong>Terra Collection:</strong> Rugged outdoor watches for explorers and adventurers.</li>
+      <li><strong>Elegance Line:</strong> Slim dress watches with classic aesthetics and modern durability.</li>
+    </ul>
   </section>
 
-  <section id="concept">
-    <h2>Concept</h2>
-    <p>Our concept blends classic watchmaking traditions with modern innovations — a hybrid of elegant dress watch sophistication and rugged dive watch functionality. VRATUS™ watches are designed to be versatile companions, perfect for both boardroom meetings and outdoor expeditions.</p>
+  <section id="product" class="product">
+    <h2>Featured Product</h2>
+    <p>Introducing the VRATUS™ Vortex Hybrid — a seamless blend of dress and diver watch features with a textured dial inspired by nature’s finest elements.</p>
+    <img src="https://images.unsplash.com/photo-1518546305921-4097c7c65099?auto=format&fit=crop&w=800&q=80" alt="VRATUS Vortex Hybrid Watch" />
   </section>
 
   <section id="contact">
     <h2>Contact Us</h2>
-    <form action="https://formspree.io/f/xknavqwp" method="POST">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required placeholder="Your full name" />
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="_replyto" required placeholder="your.email@example.com" />
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
-
-            <button type="submit">Send Message</button>
+    <form id="contactForm" action="https://formspree.io/f/mgedqgvb" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name" />
+      <input type="email" name="_replyto" placeholder="Your Email" required aria-label="Your Email" />
+      <textarea name="message" rows="5" placeholder="Your Message" required aria-label="Your Message"></textarea>
+      <button type="submit">Send Message</button>
     </form>
   </section>
 </main>
 
 <footer>
-  &copy; 2025 VRATUS™. All Rights Reserved.
+  &copy; 2025 VRATUS™. All rights reserved.
 </footer>
 
 <script>
-  // THEME TOGGLE LOGIC
-  const toggleButtons = document.querySelectorAll('.theme-toggle');
-  const body = document.body;
-
-  // Load saved theme from localStorage
-  if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark');
-    toggleButtons.forEach(btn => btn.textContent = '☀️');
-  }
-
-  toggleButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      if(body.classList.contains('dark')) {
-        btn.textContent = '☀️';
-        localStorage.setItem('theme', 'dark');
-      } else {
-        btn.textContent = '🌙';
-        localStorage.setItem('theme', 'light');
-      }
-    });
-  });
-
-  // HAMBURGER MENU TOGGLE
+  // Hamburger menu toggle
   const hamburger = document.querySelector('.hamburger');
   const mobileNav = document.querySelector('nav.mobile-nav');
 
-  function toggleMobileNav() {
-    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', !expanded);
-    mobileNav.classList.toggle('show');
+  hamburger.addEventListener('click', () => {
+    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!isExpanded));
     hamburger.classList.toggle('active');
-    mobileNav.setAttribute('aria-hidden', expanded);
-  }
+    mobileNav.classList.toggle('show');
+    mobileNav.setAttribute('aria-hidden', String(isExpanded));
+  });
 
-  hamburger.addEventListener('click', toggleMobileNav);
-  hamburger.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleMobileNav();
+  // Close mobile nav on link click
+  document.querySelectorAll('nav.mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileNav.classList.remove('show');
+      mobileNav.setAttribute('aria-hidden', 'true');
+    });
+  });
+
+  // Theme toggle
+  const themeToggle = document.querySelector('.theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    if(document.body.classList.contains('dark')) {
+      themeToggle.textContent = '☀️';
+      localStorage.setItem('theme', 'dark');
+    } else {
+      themeToggle.textContent = '🌙';
+      localStorage.setItem('theme', 'light');
     }
   });
 
-  // Close mobile nav when clicking a link
-  mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.setAttribute('aria-expanded', false);
-      mobileNav.classList.remove('show');
-      hamburger.classList.remove('active');
-      mobileNav.setAttribute('aria-hidden', true);
-    });
+  // Preserve theme on reload
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if(savedTheme === 'dark') {
+      document.body.classList.add('dark');
+      themeToggle.textContent = '☀️';
+    }
   });
 </script>
 
 </body>
 </html>
-
