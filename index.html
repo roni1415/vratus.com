@@ -2,479 +2,371 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VRATUS™ | Rugged Luxury Watches</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VRATUS™ - Rugged Luxury Watches</title>
+  <!-- AOS Animation CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
+    /* VRATUS™ color palette */
     :root {
-      --primary: #0a0f1d;
-      --secondary: #1e1e1e;
-      --text: #ffffff;
-      --accent: #8a1538; /* Wine Red */
-      --deep-blue: #0a2540;
-      --deep-green: #0f3d3e;
-      --light-bg: #ffffff;
-      --light-text: #000000;
+      --deep-blue: #0b2349;
+      --wine-red: #6b1e3e;
+      --deep-green: #135846;
+      --text-color: #f5f5f5;
+      --bg-color: #121212;
+      --accent-color: var(--wine-red);
     }
-
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--primary);
-      color: var(--text);
-      transition: background 0.3s, color 0.3s;
-      overflow-x: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
     }
-
-    body.light-mode {
-      background-color: var(--light-bg);
-      color: var(--light-text);
+    a {
+      color: var(--accent-color);
+      text-decoration: none; /* remove underline */
+      cursor: pointer;
     }
-
-    header {
+    a:hover {
+      text-decoration: underline;
+    }
+    /* Navbar */
+    nav {
+      position: fixed;
+      width: 100%;
+      background-color: var(--deep-blue);
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
-      background-color: var(--secondary);
-      position: sticky;
-      top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
     }
-
-    .logo {
+    nav .logo {
+      font-weight: 700;
       font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--accent);
-      user-select: none;
+      color: var(--text-color);
     }
-
-    nav {
+    nav ul {
+      list-style: none;
       display: flex;
-      gap: 1rem;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
     }
-
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      transition: color 0.3s;
+    nav ul li {
+      font-weight: 600;
     }
-
-    nav a::after {
-      content: "";
-      display: block;
-      width: 0%;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.3s;
-      position: absolute;
-      bottom: -4px;
-      left: 0;
+    nav ul li a {
+      transition: color 0.3s ease;
     }
-
-    nav a:hover {
-      color: var(--accent);
+    nav ul li a:hover {
+      color: var(--deep-green);
     }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    /* Unique Toggle Theme Button */
-    .toggle-theme {
-      position: relative;
-      width: 48px;
-      height: 48px;
-      background: none;
-      border: 2px solid var(--text);
-      border-radius: 50%;
+    /* Hamburger Menu (mobile) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
       cursor: pointer;
-      overflow: hidden;
-      transition: background 0.3s, border-color 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      gap: 5px;
     }
-
-    .toggle-theme:hover {
-      border-color: var(--accent);
-      background-color: var(--accent);
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-color);
+      border-radius: 2px;
     }
-
-    .toggle-theme .sun, 
-    .toggle-theme .moon {
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      fill: var(--text);
-      transition: opacity 0.4s ease;
-    }
-
-    .toggle-theme .sun {
-      opacity: 1;
-    }
-
-    body.light-mode .toggle-theme .sun {
-      opacity: 0;
-    }
-
-    body.light-mode .toggle-theme .moon {
-      opacity: 1;
-    }
-
-    /* Hide moon by default */
-    .toggle-theme .moon {
-      opacity: 0;
-    }
-
-    /* Mobile menu */
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        display: none;
-        background-color: var(--secondary);
-        position: absolute;
-        top: 64px;
-        right: 0;
+    /* Responsive Navbar */
+    @media (max-width: 768px) {
+      nav ul {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        background-color: var(--deep-blue);
+        height: calc(100vh - 60px);
         width: 200px;
+        flex-direction: column;
+        align-items: flex-start;
         padding: 1rem;
-        border-radius: 4px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        gap: 1rem;
+        transition: right 0.3s ease;
+        z-index: 999;
       }
-
-      nav.show {
+      nav ul.active {
+        right: 0;
+      }
+      .hamburger {
         display: flex;
       }
-
-      .menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
     }
-
-    .menu-toggle {
-      display: none;
-    }
-
-    section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .hero {
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .btn {
-      padding: 0.8rem 1.6rem;
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 1.5rem;
-      font-weight: 600;
-      transition: background-color 0.3s;
-    }
-
-    .btn:hover {
-      background-color: #6e112d;
-    }
-
-    .founder-img {
-      width: 150px;
-      border-radius: 50%;
-      margin: 1rem 0;
-      box-shadow: 0 0 10px var(--accent);
-      transition: transform 0.3s;
-    }
-
-    .founder-img:hover {
-      transform: scale(1.05);
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin: 0.5rem 0;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      font-family: inherit;
-      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-      transition: box-shadow 0.3s;
-    }
-
-    form input:focus, form textarea:focus {
-      outline: none;
-      box-shadow: 0 0 8px var(--accent);
-    }
-
-    form button {
-      background-color: var(--deep-green);
-      color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s;
-    }
-
-    form button:hover {
-      background-color: #0b564c;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: var(--secondary);
-      font-size: 0.9rem;
-      user-select: none;
-    }
-
-    /* Product Grid */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .product-card {
-      background-color: var(--secondary);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
+    /* Hero Section */
+    header {
+      height: 100vh;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      color: var(--text);
+      padding: 0 1rem;
+      background: linear-gradient(135deg, var(--deep-blue), var(--wine-red));
+      color: var(--text-color);
     }
-
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+    .btn-explore {
+      background-color: var(--accent-color);
+      border: none;
+      color: var(--text-color);
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .btn-explore:hover {
+      background-color: var(--deep-green);
+    }
+    /* Products Section */
+    #products {
+      padding: 4rem 2rem;
+      background-color: #1c1c1c;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #products h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      color: var(--accent-color);
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.5rem;
+    }
+    .product-card {
+      background: linear-gradient(145deg, #222222, #1a1a1a);
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 5px 5px 15px #0b2349, -5px -5px 15px #6b1e3e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      color: var(--text-color);
+    }
     .product-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(138,21,56,0.7);
+      box-shadow: 7px 7px 20px var(--wine-red), -7px -7px 20px var(--deep-green);
     }
-
-    .product-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.4s;
-    }
-
-    .product-card:hover .product-image {
-      transform: scale(1.05);
-    }
-
-    .product-info {
-      padding: 1rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .product-name {
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
-
-    .product-desc {
-      font-size: 0.95rem;
+    .product-card img {
+      max-width: 100%;
+      border-radius: 15px;
       margin-bottom: 1rem;
-      flex-grow: 1;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
     }
-
-    .product-link {
-      text-decoration: none;
-      color: var(--text);
-      background-color: var(--accent);
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: background-color 0.3s;
+    .product-card h3 {
+      margin: 0.5rem 0 1rem 0;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--accent-color);
+      text-decoration: none; /* remove underline */
+    }
+    .product-card p {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--text-color);
+      margin: 0;
+    }
+    /* Founder Section */
+    #founder {
+      background: linear-gradient(135deg, var(--wine-red), var(--deep-green));
+      color: var(--text-color);
+      padding: 4rem 2rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 3rem auto;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.1);
+    }
+    #founder h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    #founder p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    #founder a.email {
       display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: var(--deep-blue);
+      color: var(--text-color);
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      letter-spacing: 1.2px;
     }
-
-    .product-link:hover {
-      background-color: #6e112d;
+    #founder a.email:hover {
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+    }
+    /* Footer */
+    footer {
+      padding: 1rem 2rem;
+      text-align: center;
+      background-color: var(--deep-blue);
+      color: var(--text-color);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
     }
   </style>
 </head>
 <body>
-
-  <header>
+  <nav>
     <div class="logo">VRATUS™</div>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <nav id="nav-links">
-      <a href="#hero">Home</a>
-      <a href="#founder">Founder</a>
-      <a href="#vision">Vision</a>
-      <a href="#craftsmanship">Craftsmanship</a>
-      <a href="#products">Signature Timepieces</a>
-      <a href="#nft">NFT</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="toggle-theme" aria-label="Toggle Theme" onclick="toggleTheme()">
-      <!-- Sun Icon -->
-      <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="5" />
-        <g stroke="currentColor" stroke-width="2">
-          <line x1="12" y1="1" x2="12" y2="4"/>
-          <line x1="12" y1="20" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/>
-          <line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/>
-          <line x1="1" y1="12" x2="4" y2="12"/>
-          <line x1="20" y1="12" x2="23" y2="12"/>
-          <line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/>
-          <line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/>
-        </g>
-      </svg>
-      <!-- Moon Icon -->
-      <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21a9 9 0 009-8.21z" />
-      </svg>
-    </button>
+    <ul id="nav-links">
+      <li><a href="#founder">Founder</a></li>
+      <li><a href="#products">Collection</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+
+  <header data-aos="fade-down" data-aos-duration="1000">
+    <h1>Rugged Luxury Elegance</h1>
+    <p>Discover the perfect blend of craftsmanship, nature-inspired design, and timeless luxury with VRATUS™ watches.</p>
+    <button class="btn-explore" id="btnExplore">Explore Collection</button>
   </header>
 
-  <section id="hero" class="hero">
-    <h1>Timeless Elegance. Built for Legends.</h1>
-    <p>Luxury watches designed with purpose and power.</p>
-    <button class="btn">Explore Collection</button>
-  </section>
-
-  <section id="founder">
-    <h2>Meet the Founder</h2>
-    <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/498015082_17879439948300113_2529025175131458705_n.jpg" alt="Ronak Patel" class="founder-img" /> 
-    <p><strong>Ronak Patel</strong><br>Founder & CEO</p>
-    <p><em>"Creating timepieces that reflect both strength and elegance is my passion."</em></p>
-    <p>Email: <a href="mailto:patelronak1514@gmail.com">patelronak1514@gmail.com</a></p>
-  </section>
-
-  <section id="vision">
-    <h2>Our Vision</h2>
-    <p>At VRATUS™, our mission is to combine the refined elegance of dress watches with the enduring strength of diver-style functionality. We focus on craftsmanship, affordability, and bold designs that reflect power and class.</p>
-  </section>
-
-  <section id="craftsmanship">
-    <h2>Craftsmanship</h2>
-    <p>Inspired by the intricate textures of Grand Seiko dials, VRATUS™ watches are crafted with artistic finesse. Every detail, from textured faces to the robust casing, is designed to stand the test of time while exuding class.</p>
-  </section>
-
-  <!-- New Products Section -->
-  <section id="products">
+  <section id="products" data-aos="fade-up" data-aos-duration="1000">
     <h2>Signature Timepieces</h2>
-    <div class="products">
-      <a href="https://example.com/product/aurora" class="product-card" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1539887556453-485d022d735b?auto=format&fit=crop&w=400&q=80" alt="Aurora Watch" class="product-image" />
-        <div class="product-info">
-          <div class="product-name">Aurora</div>
-          <div class="product-desc">Inspired by the Northern Lights, with a luminous dial that glows subtly in the dark.</div>
-          <span class="product-link">View Details</span>
-        </div>
-      </a>
-
-      <a href="https://example.com/product/terra" class="product-card" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" alt="Terra Watch" class="product-image" />
-        <div class="product-info">
-          <div class="product-name">Terra</div>
-          <div class="product-desc">Textured dial inspired by rugged earth, perfect for adventurers.</div>
-          <span class="product-link">View Details</span>
-        </div>
-      </a>
-
-      <a href="https://example.com/product/oceanus" class="product-card" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Oceanus Watch" class="product-image" />
-        <div class="product-info">
-          <div class="product-name">Oceanus</div>
-          <div class="product-desc">Deep blue dial with wave textures, reflecting the vast ocean’s calm and power.</div>
-          <span class="product-link">View Details</span>
-        </div>
-      </a>
-
-      <a href="https://example.com/product/ember" class="product-card" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=400&q=80" alt="Ember Watch" class="product-image" />
-        <div class="product-info">
-          <div class="product-name">Ember</div>
-          <div class="product-desc">Warm red dial inspired by glowing embers, exuding passion and strength.</div>
-          <span class="product-link">View Details</span>
-        </div>
-      </a>
+    <div class="product-grid">
+      <!-- 9 Products -->
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="https://images.unsplash.com/photo-1518544504610-0c7e9a00a3e7?auto=format&fit=crop&w=400&q=80" alt="Aurora" />
+        <h3>Aurora</h3>
+        <p>Inspired by the dazzling northern lights, Aurora blends shimmering green and blue hues with a sleek stainless steel frame.</p>
+      </div>
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=400&q=80" alt="Terra" />
+        <h3>Terra</h3>
+        <p>With earthy brown and gold tones, Terra captures the spirit of rugged mountains and natural landscapes in a timeless design.</p>
+      </div>
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="300">
+        <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=400&q=80" alt="Oceanus" />
+        <h3>Oceanus</h3>
+        <p>A deep blue dial and polished bezel evoke the endless ocean, embodying strength and serenity for the modern adventurer.</p>
+      </div>
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="400">
+        <img src="https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?auto=format&fit=crop&w=400&q=80" alt="Ember" />
+        <h3>Ember</h3>
+        <p>Glowing red and orange tones mirror the warmth of embers and fire, paired with durable casing for bold style.</p>
+      </div>
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="500">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" alt="Zephyr" />
+        <h3>Zephyr</h3>
+        <p>Light and airy with silver and sky-blue accents, Zephyr is designed for those who chase the breeze and open skies.</p>
+      </div>
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="600">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Verdant" />
+        <h3>Verdant</h3>
+        <p>Rich green tones and textured dial inspired by lush forests make Verdant a symbol of growth and vitality.</p>
+      </div>
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="700">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Empress" />
+        <h3>Empress</h3>
+        <p>Elegant and royal with deep maroon hues and gold highlights, Empress embodies power and sophistication.</p>
+      </div>
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="800">
+        <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=400&q=80" alt="Nimbus" />
+        <h3>Nimbus</h3>
+        <p>Soft grey tones with cloud-like textures create Nimbus, a watch that inspires calm and clarity.</p>
+      </div>
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="900">
+        <img src="https://images.unsplash.com/photo-1486308510493-cbfa7aa76e27?auto=format&fit=crop&w=400&q=80" alt="Solstice" />
+        <h3>Solstice</h3>
+        <p>Sun-kissed gold and orange dial capture the brilliance of the longest day, radiating warmth and light.</p>
+      </div>
     </div>
   </section>
 
-  <section id="nft">
-    <h2>Digital Membership</h2>
-    <p>Each VRATUS™ watch comes with a unique NFT, offering digital membership to exclusive updates, early access drops, and limited-edition designs. A true blend of luxury and modern innovation.</p>
+  <section id="founder" data-aos="fade-up" data-aos-duration="1000">
+    <h2>Founder</h2>
+    <p>Ronak, the visionary behind VRATUS™, combines passion for nature and precision engineering to craft timepieces that are rugged yet elegant.</p>
+    <a class="email" href="mailto:ronak@example.com">ronak@example.com</a>
   </section>
 
-  <section id="contact">
+  <section id="contact" data-aos="fade-up" data-aos-duration="1000" style="padding: 4rem 2rem; max-width: 600px; margin: 0 auto; color: var(--text-color);">
     <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
+    <form action="https://formspree.io/f/your-form-id" method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
+      <input type="text" name="name" placeholder="Your Name" required style="padding: 0.8rem; border-radius: 8px; border: none;"/>
+      <input type="email" name="email" placeholder="Your Email" required style="padding: 0.8rem; border-radius: 8px; border: none;"/>
+      <textarea name="message" rows="5" placeholder="Your Message" required style="padding: 0.8rem; border-radius: 8px; border: none;"></textarea>
+      <button type="submit" style="background-color: var(--accent-color); color: var(--text-color); border: none; padding: 1rem; border-radius: 30px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1.5px;">Send</button>
     </form>
   </section>
 
   <footer>
-    <p>Follow us on Instagram • Email: patelronak1514@gmail.com</p>
-    <p>&copy; 2025 VRATUS™. All rights reserved.</p>
+    &copy; 2025 VRATUS™. All Rights Reserved.
   </footer>
 
+  <!-- AOS Animation JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    function toggleTheme() {
-      document.body.classList.toggle('light-mode');
-    }
+    AOS.init({
+      once: true,
+      easing: 'ease-in-out',
+      duration: 800
+    });
 
-    function toggleMenu() {
-      const nav = document.getElementById("nav-links");
-      nav.classList.toggle("show");
-    }
+    // Smooth scroll for Explore button and navbar links
+    document.getElementById('btnExplore').addEventListener('click', () => {
+      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+    });
 
-    // Scroll animation for sections
-    function revealSections() {
-      const sections = document.querySelectorAll('section');
-      const triggerBottom = window.innerHeight * 0.85;
-
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-
-        if (sectionTop < triggerBottom) {
-          section.classList.add('visible');
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          // Close mobile nav if open
+          document.getElementById('nav-links').classList.remove('active');
         }
       });
-    }
+    });
 
-    window.addEventListener('scroll', revealSections);
-    window.addEventListener('load', revealSections);
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
   </script>
 </body>
 </html>
