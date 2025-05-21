@@ -4,11 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="VRATUS™ - Rugged luxury watches combining timeless elegance with durable craftsmanship. Explore our signature timepieces and digital membership NFTs." />
+  <meta name="keywords" content="wrist watches, automatic watches, Indian watches, affordable luxury watches, high quality watches, hybrid automatic watch, diver watch, dress watch, luxury watches" />
+  <link rel="canonical" href="https://vratus.com" />
+  <meta property="og:title" content="VRATUS™ | Rugged Luxury Watches" />
+  <meta property="og:description" content="Indian automatic wrist watches combining affordable luxury and high quality craftsmanship. Hybrid automatic luxury watches blending diver and dress styles for timeless elegance and durability." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/FAVICON.jpg" />
+  <meta property="og:url" content="https://vratus.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VRATUS™ | Rugged Luxury Watches" />
+  <meta name="twitter:description" content="Indian automatic wrist watches combining affordable luxury and high quality craftsmanship. Hybrid automatic luxury watches blending diver and dress styles for timeless elegance and durability." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/FAVICON.jpg" />
+  <meta name="robots" content="index, follow" />
   <title>VRATUS™ | Rugged Luxury Watches</title>
   <link rel="icon" href="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/FAVICON.jpg" type="image/jpeg" />
   <style>
     html {
       scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-padding-top: 60px;
     }
     *, *::before, *::after {
       box-sizing: border-box;
@@ -218,7 +232,7 @@
         color: var(--accent);
         font-size: 2rem;
         cursor: pointer;
-        transition: color 0.3s ease;
+        transition: color 0.3s ease, transform 0.3s ease;
         position: absolute;
         top: 1rem;
         left: 50%;
@@ -226,10 +240,18 @@
         z-index: 1101;
       }
 
+      /* Hide menu toggle on screens wider than 768px */
+      @media (min-width: 769px) {
+        .menu-toggle {
+          display: none;
+        }
+      }
+
       .menu-toggle:hover,
       .menu-toggle:focus-visible {
         color: var(--text);
         outline: none;
+        transform: translateX(-50%) scale(1.2);
       }
     }
 
@@ -493,9 +515,10 @@
   </style>
 </head>
 <body>
+  <div class="classic-banner">Launching Soon: The Future of Luxury Watches</div>
   <header>
     <a href="#hero" class="logo">VRATUS™</a>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    
     <nav id="nav-links">
       <a href="#hero">Home</a>
       <a href="#founder">Founder</a>
@@ -505,6 +528,7 @@
       <a href="#nft">NFT</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="menu-toggle" aria-label="Toggle Menu" onclick="toggleMenu()">☰</button>
     <button class="toggle-theme" aria-label="Toggle Theme" onclick="toggleTheme()">
       <!-- Sun Icon -->
       <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -526,6 +550,20 @@
       </svg>
     </button>
   </header>
+  <style>
+    .classic-banner {
+      background-color: #f5f5dc;
+      color: #333333;
+      font-family: 'Georgia', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 0.5rem 0;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid #8a1538;
+      user-select: none;
+    }
+  </style>
 
   <section id="hero" class="hero">
     <h1>Timeless Elegance. Built for Legends.</h1>
@@ -674,9 +712,9 @@
     document.addEventListener('click', function(event) {
       const nav = document.getElementById("nav-links");
       const menuToggle = document.querySelector('.menu-toggle');
-      if (!nav || !menuToggle) return;
+      if (!nav) return;
       const isClickInsideNav = nav.contains(event.target);
-      const isClickOnToggle = menuToggle.contains(event.target);
+      const isClickOnToggle = menuToggle && menuToggle.contains(event.target);
 
       if (!isClickInsideNav && !isClickOnToggle && nav.classList.contains('show')) {
         nav.classList.remove('show');
@@ -768,5 +806,99 @@
     });
   </script>
   <button id="scrollToTopBtn" aria-label="Go to home page" title="Go to Home" style="font-size: 18px; padding: 8px 12px;">🏠</button>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "VRATUS",
+    "url": "https://vratus.com",
+    "logo": "https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/FAVICON.jpg",
+    "sameAs": [
+      "https://www.instagram.com/vratuswatches"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "VRATUS Hybrid Automatic Luxury Watch",
+    "image": [
+      "https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch2.png",
+      "https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch3.png",
+      "https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch7.jpeg"
+    ],
+    "description": "VRATUS™ hybrid automatic luxury watches combining diver and dress watch styles with high quality craftsmanship and affordable pricing.",
+    "brand": {
+      "@type": "Brand",
+      "name": "VRATUS"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://vratus.com",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Aurora Borealis",
+    "image": "https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch2.png",
+    "description": "Dial inspired by the shimmering Northern Lights, featuring luminous gradients that dance in the dark.",
+    "brand": {
+      "@type": "Brand",
+      "name": "VRATUS"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://vratus.com",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Terra Firma",
+    "image": "https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch3.png",
+    "description": "Dial textured with rugged earth patterns, evoking the spirit of adventure and exploration.",
+    "brand": {
+      "@type": "Brand",
+      "name": "VRATUS"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://vratus.com",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Oceanus Wave",
+    "image": "https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch7.jpeg",
+    "description": "Deep blue dial with wave-like textures, capturing the calm and power of the ocean.",
+    "brand": {
+      "@type": "Brand",
+      "name": "VRATUS"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://vratus.com",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
 </body>
 </html>
