@@ -22,6 +22,7 @@
       background-color: var(--primary);
       color: var(--text);
       transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
     }
 
     body.light-mode {
@@ -44,6 +45,7 @@
       font-size: 1.5rem;
       font-weight: bold;
       color: var(--accent);
+      user-select: none;
     }
 
     nav {
@@ -55,76 +57,90 @@
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
     }
 
-    .toggle-theme {
-      background: none;
-      border: 1px solid var(--text);
-      color: var(--text);
-      padding: 0.4rem 0.8rem;
-      cursor: pointer;
-      border-radius: 6px;
+    nav a::after {
+      content: "";
+      display: block;
+      width: 0%;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
     }
 
-    section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .hero {
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
+    nav a:hover {
       color: var(--accent);
     }
 
-    .btn {
-      padding: 0.8rem 1.6rem;
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 1.5rem;
-    }
-
-    .founder-img {
-      width: 150px;
-      border-radius: 50%;
-      margin: 1rem 0;
-    }
-
-    form input, form textarea {
+    nav a:hover::after {
       width: 100%;
-      padding: 0.8rem;
-      margin: 0.5rem 0;
-      border: none;
-      border-radius: 4px;
     }
 
-    form button {
-      background-color: var(--deep-green);
-      color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
+    /* Unique Toggle Theme Button */
+    .toggle-theme {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      background: none;
+      border: 2px solid var(--text);
+      border-radius: 50%;
       cursor: pointer;
+      overflow: hidden;
+      transition: background 0.3s, border-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: var(--secondary);
-      font-size: 0.9rem;
+    .toggle-theme:hover {
+      border-color: var(--accent);
+      background-color: var(--accent);
     }
 
+    .toggle-theme .sun, 
+    .toggle-theme .moon {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      fill: var(--text);
+      transition: opacity 0.4s ease;
+    }
+
+    .toggle-theme .sun {
+      opacity: 1;
+    }
+
+    body.light-mode .toggle-theme .sun {
+      opacity: 0;
+    }
+
+    body.light-mode .toggle-theme .moon {
+      opacity: 1;
+    }
+
+    /* Hide moon by default */
+    .toggle-theme .moon {
+      opacity: 0;
+    }
+
+    /* Mobile menu */
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
         display: none;
+        background-color: var(--secondary);
+        position: absolute;
+        top: 64px;
+        right: 0;
+        width: 200px;
+        padding: 1rem;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
       }
 
       nav.show {
@@ -144,6 +160,171 @@
     .menu-toggle {
       display: none;
     }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero {
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .btn {
+      padding: 0.8rem 1.6rem;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #6e112d;
+    }
+
+    .founder-img {
+      width: 150px;
+      border-radius: 50%;
+      margin: 1rem 0;
+      box-shadow: 0 0 10px var(--accent);
+      transition: transform 0.3s;
+    }
+
+    .founder-img:hover {
+      transform: scale(1.05);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      transition: box-shadow 0.3s;
+    }
+
+    form input:focus, form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    form button {
+      background-color: var(--deep-green);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    form button:hover {
+      background-color: #0b564c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--secondary);
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    /* Product Grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .product-card {
+      background-color: var(--secondary);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      color: var(--text);
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(138,21,56,0.7);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-name {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .product-desc {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .product-link {
+      text-decoration: none;
+      color: var(--text);
+      background-color: var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      display: inline-block;
+    }
+
+    .product-link:hover {
+      background-color: #6e112d;
+    }
   </style>
 </head>
 <body>
@@ -156,10 +337,30 @@
       <a href="#founder">Founder</a>
       <a href="#vision">Vision</a>
       <a href="#craftsmanship">Craftsmanship</a>
+      <a href="#products">Signature Timepieces</a>
       <a href="#nft">NFT</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
+    <button class="toggle-theme" aria-label="Toggle Theme" onclick="toggleTheme()">
+      <!-- Sun Icon -->
+      <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="5" />
+        <g stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="1" x2="12" y2="4"/>
+          <line x1="12" y1="20" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/>
+          <line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="4" y2="12"/>
+          <line x1="20" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/>
+          <line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/>
+        </g>
+      </svg>
+      <!-- Moon Icon -->
+      <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21a9 9 0 009-8.21z" />
+      </svg>
+    </button>
   </header>
 
   <section id="hero" class="hero">
@@ -170,7 +371,7 @@
 
   <section id="founder">
     <h2>Meet the Founder</h2>
-    <img src="https://via.placeholder.com/150" alt="Ronak Patel" class="founder-img" />
+    <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/498015082_17879439948300113_2529025175131458705_n.jpg" alt="Ronak Patel" class="founder-img" /> 
     <p><strong>Ronak Patel</strong><br>Founder & CEO</p>
     <p><em>"Creating timepieces that reflect both strength and elegance is my passion."</em></p>
     <p>Email: <a href="mailto:patelronak1514@gmail.com">patelronak1514@gmail.com</a></p>
@@ -184,6 +385,48 @@
   <section id="craftsmanship">
     <h2>Craftsmanship</h2>
     <p>Inspired by the intricate textures of Grand Seiko dials, VRATUS™ watches are crafted with artistic finesse. Every detail, from textured faces to the robust casing, is designed to stand the test of time while exuding class.</p>
+  </section>
+
+  <!-- New Products Section -->
+  <section id="products">
+    <h2>Signature Timepieces</h2>
+    <div class="products">
+      <a href="https://example.com/product/aurora" class="product-card" target="_blank" rel="noopener">
+        <img src="https://images.unsplash.com/photo-1539887556453-485d022d735b?auto=format&fit=crop&w=400&q=80" alt="Aurora Watch" class="product-image" />
+        <div class="product-info">
+          <div class="product-name">Aurora</div>
+          <div class="product-desc">Inspired by the Northern Lights, with a luminous dial that glows subtly in the dark.</div>
+          <span class="product-link">View Details</span>
+        </div>
+      </a>
+
+      <a href="https://example.com/product/terra" class="product-card" target="_blank" rel="noopener">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" alt="Terra Watch" class="product-image" />
+        <div class="product-info">
+          <div class="product-name">Terra</div>
+          <div class="product-desc">Textured dial inspired by rugged earth, perfect for adventurers.</div>
+          <span class="product-link">View Details</span>
+        </div>
+      </a>
+
+      <a href="https://example.com/product/oceanus" class="product-card" target="_blank" rel="noopener">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Oceanus Watch" class="product-image" />
+        <div class="product-info">
+          <div class="product-name">Oceanus</div>
+          <div class="product-desc">Deep blue dial with wave textures, reflecting the vast ocean’s calm and power.</div>
+          <span class="product-link">View Details</span>
+        </div>
+      </a>
+
+      <a href="https://example.com/product/ember" class="product-card" target="_blank" rel="noopener">
+        <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=400&q=80" alt="Ember Watch" class="product-image" />
+        <div class="product-info">
+          <div class="product-name">Ember</div>
+          <div class="product-desc">Warm red dial inspired by glowing embers, exuding passion and strength.</div>
+          <span class="product-link">View Details</span>
+        </div>
+      </a>
+    </div>
   </section>
 
   <section id="nft">
@@ -215,6 +458,23 @@
       const nav = document.getElementById("nav-links");
       nav.classList.toggle("show");
     }
+
+    // Scroll animation for sections
+    function revealSections() {
+      const sections = document.querySelectorAll('section');
+      const triggerBottom = window.innerHeight * 0.85;
+
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop < triggerBottom) {
+          section.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealSections);
+    window.addEventListener('load', revealSections);
   </script>
 </body>
 </html>
