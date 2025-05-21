@@ -1,520 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YX1NJ45XC9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YX1NJ45XC9');
-</script>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VRATUS™ - Rugged Luxury Watches</title>
-  <link rel="icon" href="vratus.io.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VRATUS™ – Rugged Luxury Elegance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <style>
-    /* Color Palette */
     :root {
-      --deep-blue: #002855;
-      --maroon-red: #7b112b;
-      --deep-green: #004d40;
-      --light-bg: #f9f9f9;
+      --primary: #1c1c3c;
+      --accent: #7b112c;
+      --luxury: #174d36;
+      --text: #ffffff;
+      --bg: #f7f5f2;
       --dark-bg: #121212;
-      --light-text: #222;
-      --dark-text: #eee;
-      --primary: var(--deep-blue);
-      --secondary: var(--maroon-red);
-      --accent: var(--deep-green);
+      --transition: all 0.4s ease;
     }
 
-    /* Reset and Base Styles */
-
-    .product-section {
-  padding: 4rem 2rem;
-  background-color: var(--bg);
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2rem;
-  color: var(--primary);
-  margin-bottom: 0.5rem;
-}
-
-.section-description {
-  font-size: 1.1rem;
-  color: var(--light-text);
-  max-width: 700px;
-  margin: 0 auto 2rem;
-}
-
-.product-grid {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.product-card {
-  background-color: var(--card);
-  border-radius: 1rem;
-  padding: 1rem;
-  width: 280px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-}
-
-.product-card img {
-  width: 100%;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.product-card h3 {
-  font-size: 1.2rem;
-  color: var(--secondary);
-  margin-bottom: 0.5rem;
-}
-
-.product-card p {
-  font-size: 0.95rem;
-  color: var(--light-text);
-}
-
-    :root {
-  --primary: #1e2b4a; /* deep blue */
-  --secondary: #800020; /* deep wine red */
-  --bg: #fdfdfd;
-  --card: #ffffff;
-  --light-text: #555555;
-}
-
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
     body {
-      font-family: 'Georgia', serif;
-      background: var(--light-bg);
-      color: var(--light-text);
-      line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      transition: var(--transition);
     }
+
     body.dark {
       background: var(--dark-bg);
-      color: var(--dark-text);
-    }
-    a {
-      color: var(--secondary);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
+      color: var(--text);
     }
 
-    /* Header and Navigation */
     header {
-      background: #fff;
-      color: var(--primary);
+      background: var(--primary);
       padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      font-weight: 600;
-      font-size: 1rem;
+      align-items: center;
+      color: white;
     }
-    header h1 {
-      font-size: 1.8rem;
-      letter-spacing: 3px;
-      color: var(--primary);
-      user-select: none;
-    }
+
     nav {
       display: flex;
       gap: 1.5rem;
-      font-weight: 500;
-      transition: max-height 0.5s ease, opacity 0.5s ease;
-    }
-    nav a {
-      position: relative;
-      color: var(--primary);
-      padding: 0.3rem 0;
-      transition: color 0.3s ease;
-    }
-    nav a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -3px;
-      width: 0%;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.3s ease;
-    }
-    nav a:hover,
-    nav a:focus {
-      color: var(--secondary);
-    }
-    nav a:hover::after,
-    nav a:focus::after {
-      width: 100%;
     }
 
-    /* Responsive Navigation */
-    .menu-toggle {
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hamburger {
       display: none;
       flex-direction: column;
       cursor: pointer;
-      user-select: none;
     }
-    .menu-toggle span {
-      width: 25px;
+
+    .hamburger span {
       height: 3px;
-      background: var(--primary);
-      margin: 5px 0;
-      border-radius: 2px;
-      transition: 0.4s;
+      background: white;
+      margin: 4px 0;
+      width: 25px;
     }
+
     @media (max-width: 768px) {
       nav {
+        display: none;
         flex-direction: column;
-        width: 100%;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
+        gap: 1rem;
+        background: var(--primary);
+        padding: 1rem;
       }
+
       nav.active {
-        max-height: 400px; /* enough to show all */
-        opacity: 1;
+        display: flex;
       }
-      .menu-toggle {
+
+      .hamburger {
         display: flex;
       }
     }
 
-    /* Theme Toggle Button */
-    .theme-toggle {
-      background: transparent;
-      border: 2px solid var(--primary);
-      border-radius: 50%;
-      color: var(--primary);
-      font-size: 1.2rem;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s, border-color 0.3s;
-      user-select: none;
-    }
-    .theme-toggle:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: white;
-    }
-    body.dark .theme-toggle {
-      border-color: var(--dark-text);
-      color: var(--dark-text);
-    }
-    body.dark .theme-toggle:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: white;
-    }
-
-    /* Main Content */
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
     section {
-      margin-bottom: 3rem;
-    }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      color: var(--secondary);
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-      padding-bottom: 0.2rem;
-      user-select: none;
-    }
-    section p {
-      font-size: 1.1rem;
-      color: inherit;
-      margin-top: 0.5rem;
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    /* Product Image */
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      padding: 0.5rem;
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: bold;
+      transition: var(--transition);
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .product {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 300px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    body.dark .product {
+      background: #222;
+      color: white;
+    }
+
     .product img {
       width: 100%;
-      max-width: 600px;
-      border-radius: 8px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-      margin-top: 1rem;
-      user-select: none;
+      border-radius: 10px;
     }
 
-    /* Contact Form */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--primary);
+      color: white;
+    }
+
     form {
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
-      margin-top: 1rem;
-      max-width: 600px;
-      width: 100%;
-    }
-    input, textarea {
-      padding: 1rem;
-      border-radius: 8px;
-      border: 1.5px solid #ccc;
-      font-size: 1.2rem;
-      font-family: inherit;
-      transition: border-color 0.3s, box-shadow 0.3s;
-      resize: vertical;
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--secondary);
-      box-shadow: 0 0 8px var(--secondary);
-    }
-    button[type="submit"] {
-      width: 180px;
-      background: var(--secondary);
-      border: none;
-      color: white;
-      font-weight: bold;
-      font-size: 1.2rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      align-self: flex-start;
-      padding: 0.8rem 1rem;
-    }
-    button[type="submit"]:hover {
-      background: var(--accent);
-    }
-    body.dark input,
-    body.dark textarea {
-      background: #1e1e1e;
-      border-color: #444;
-      color: #eee;
+      gap: 1rem;
+      max-width: 500px;
+      margin: auto;
     }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 1.5rem 0;
-      background: var(--primary);
+    input, textarea {
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      background: var(--accent);
       color: white;
-      font-size: 0.9rem;
-      user-select: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: var(--transition);
+    }
+
+    input[type="submit"]:hover {
+      background: var(--luxury);
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>VRATUS™</h1>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <nav id="nav">
+      <a href="#about">About</a>
+      <a href="#vision">Vision</a>
+      <a href="#products">Timepieces</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    </nav>
+  </header>
 
-<header>
-  <h1>VRATUS™</h1>
-  <div class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" role="button" tabindex="0">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <nav id="navbar" role="navigation" aria-label="Primary Navigation">
-    <a href="#about">About</a>
-    <a href="#founder">Founder</a>
-    <a href="#vision">Vision</a>
-    <a href="#goal">Goal</a>
-    <a href="#brands">Brands</a>
-    <a href="#product">Product</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark theme">🌞</button>
-</header>
-
-<main>
-  <section id="about">
-    <h2>About VRATUS™</h2>
-    <p>VRATUS™ stands for rugged luxury elegance — classic watches crafted for the modern adventurer who values both style and substance. Our designs are inspired by nature, strength, and timeless craftsmanship.</p>
+  <section id="about" data-aos="fade-up">
+    <h2>Founder</h2>
+    <p>Founded by Ronak, VRATUS™ is a luxury watch brand combining bold elegance and rugged precision. It is driven by passion, crafted for legacy.</p>
   </section>
 
-  <section id="founder">
-    <h2>Founder Story</h2>
-    <p>Ronak founded VRATUS™ with a vision to create watches that represent rugged luxury — combining durability with classic elegance. Inspired by nature and timeless design, every VRATUS™ timepiece is crafted to be your lifelong companion.</p>
-    <p>Email: <a href="mailto:patelronak1514@gmail.com">patelronak1514@gmail.com</a></p>
-  </section>
-
-  <section id="vision">
+  <section id="vision" data-aos="fade-up">
     <h2>Our Vision</h2>
-    <p>To redefine affordable luxury watches by delivering exceptional quality, unique design, and unmatched durability, empowering our customers to express their bold and sophisticated style.</p>
+    <p>To redefine time through textured art, affordable elegance, and innovation like NFT digital memberships – all designed with a royal soul.</p>
   </section>
 
-  <section id="goal">
-    <h2>Our Goal</h2>
-    <p>To build a globally recognized brand that balances exquisite craftsmanship with affordability, focusing on customer satisfaction, innovation, and sustainability.</p>
+  <section id="products" data-aos="zoom-in">
+    <h2>Signature Timepieces – Vortex Collection</h2>
+    <div class="products">
+      <div class="product" data-aos="fade-up">
+        <img src="https://i.ibb.co/DL5sKcv/1.png" alt="Ocean Mist" />
+        <h3>Ocean Mist</h3>
+        <p>Inspired by morning sea breeze, this dial captures subtle ocean texture in deep turquoise blue.</p>
+      </div>
+      <div class="product" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://i.ibb.co/Pr4HZcY/2.png" alt="Emerald Glacier" />
+        <h3>Emerald Glacier</h3>
+        <p>Combining icy depth with emerald glow, this design reflects elegance in every glint.</p>
+      </div>
+      <div class="product" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://i.ibb.co/KFvXLjK/3.png" alt="Twilight Sand" />
+        <h3>Twilight Sand</h3>
+        <p>Sunset meets shoreline. The texture mirrors golden hues and soft sand curves.</p>
+      </div>
+    </div>
   </section>
 
-  <section id="brands">
-    <h2>Our Brands</h2>
-    <p>VRATUS™ offers collections that fuse nature-inspired textures with modern watchmaking techniques. Our current and upcoming lines include:</p>
-    <ul>
-      <li><strong>Vortex Collection:</strong> Textured dials inspired by natural elements and Grand Seiko designs.</li>
-      <li><strong>Terra Collection:</strong> Rugged outdoor watches for explorers and adventurers.</li>
-      <li><strong>Elegance Line:</strong> Slim dress watches with classic aesthetics and modern durability.</li>
-    </ul>
-  </section>
-
-<section id="product" class="product-section">
-  <h2 class="section-title">Signature Timepieces</h2>
-  <p class="section-description">Discover rugged luxury with our VRATUS™ Vortex Hybrid collection — where nature’s raw textures meet refined horology.</p>
-
-  <div class="product-grid">
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch3.png" alt="Vortex Glacier Blue">
-      <h3>Vortex Glacier Blue</h3>
-      <p>A dial reflecting frozen landscapes with an icy deep-blue shimmer.</p>
-    </div>
-    <div class="product-card">
-      <img src="https://pplx-res.cloudinary.com/image/upload/v1747578354/gpt4o_images/bkndgadopggfvvdk7ihy.png" alt="Vortex Forest Green">
-      <h3>Vortex Forest Gray</h3>
-      <p>Nature’s strength captured in rich forest hues and rugged textures.</p>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch1.png" alt="Vortex Obsidian Black">
-      <h3>Vortex Obsidian Black</h3>
-      <p>Minimalism meets power in a bold, obsidian-black silhouette.</p>
-    </div>
-    <div class="product-card">
-      <img src="https://pplx-res.cloudinary.com/image/upload/v1747578608/gpt4o_images/uny2mzq99dlyuwxjgvtz.png" alt="Vortex Obsidian Black">
-      <h3>Vortex sunbrust blue</h3>
-      <p>Inspired by sunburst reflection and elegant radiance.</p>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch4.jpeg" alt="Vortex Obsidian Black">
-      <h3>Vortex Velocity</h3>
-      <p>Engineered with the Brushed Soul of Steel.Represents brushed steel texture and motion.</p>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch5.jpeg" alt="Vortex Obsidian Black">
-      <h3>Vortex GLACIERFALL</h3>
-      <p>Reflects cracked glacier inspiration and clean design</p>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch6.jpeg" alt="Vortex Obsidian Black">
-      <h3>Vortex DUNESCAPE</h3>
-      <p>Based on flowing dune texture and warmth.</p>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch8.jpeg" alt="Vortex Obsidian Black">
-      <h3>Vortex INFERNO</h3>
-      <p>Rugged lava rock-inspired and powerful tone</p>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch10.jpeg" alt="Vortex Obsidian Black">
-      <h3>Vortex RAINMARK</h3>
-      <p>Echoes subtle raindrop ripple dial and serene motion</p>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch9.jpeg" alt="Vortex Obsidian Black">
-      <h3>Vortex STONEEDGE</h3>
-      <p>Inspired by granite texture and solid luxury</p>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch11.jpeg" alt="Vortex Obsidian Black">
-      <h3>Vortex LEAFSHADOW</h3>
-      <p>Based on frosted leaf vein texture and green tones</p>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch12.jpeg" alt="Vortex Obsidian Black">
-      <h3>Vortex FIRECAST</h3>
-      <p>Molten metal dial inspiration, bold and elegant.</p>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch13.jpeg" alt="Vortex Obsidian Black">
-      <h3>VRATUS™ STORMDRIFT</h3>
-      <p>Inspired by stormy skies and dynamic wind flow across clouds. The dial mimics swirling turbulence with subtle motion lines and texture</p>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch14.jpeg" alt="Vortex Obsidian Black">
-      <h3>VRATUS™ OBSIDIANSHADOW</h3>
-      <p>A bold, stealthy design influenced by obsidian rock and volcanic shadows, capturing mystery and strength with ultra-matte textures.</p>
-    </div>
-  </div>
-</section>
-
-
-  <section id="contact">
+  <section id="contact" data-aos="fade-up">
     <h2>Contact Us</h2>
-    <form action="https://formspree.io/f/mnndwyvk" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="_replyto" placeholder="Your Email" required />
-      <textarea name="message" rows="7" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
+    <form action="https://formspree.io/f/xoqgjzpq" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required/>
+      <input type="email" name="email" placeholder="Your Email" required/>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <input type="submit" value="Send Message" />
     </form>
   </section>
-</main>
 
-<footer>
-  &copy; 2025 VRATUS™. All rights reserved.
-</footer>
+  <footer>
+    &copy; 2025 VRATUS™. All rights reserved.
+  </footer>
 
-<script>
-  // Navbar toggle for mobile
-  const menuToggle = document.getElementById('menu-toggle');
-  const navbar = document.getElementById('navbar');
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
 
-  menuToggle.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-  });
-
-  // Also enable toggle with keyboard (Enter/Space) for accessibility
-  menuToggle.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      navbar.classList.toggle('active');
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
     }
-  });
 
-  // Theme toggle logic with emoji switch
-  const themeToggleBtn = document.getElementById('theme-toggle');
-
-  function setTheme(theme) {
-    if (theme === 'dark') {
-      document.body.classList.add('dark');
-      themeToggleBtn.textContent = '🌙';
-    } else {
-      document.body.classList.remove('dark');
-      themeToggleBtn.textContent = '🌞';
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("active");
     }
-  }
-
-  // Initialize theme based on stored preference or default light
-  const storedTheme = localStorage.getItem('vratus-theme') || 'light';
-  setTheme(storedTheme);
-
-  themeToggleBtn.addEventListener('click', () => {
-    const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    localStorage.setItem('vratus-theme', newTheme);
-  });
-</script>
-
+  </script>
 </body>
 </html>
