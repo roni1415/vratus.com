@@ -239,20 +239,20 @@
         transform: translateX(-50%);
         z-index: 1101;
       }
-    }
 
-    /* Hide menu toggle on screens wider than 768px */
-    @media (min-width: 769px) {
-      .menu-toggle {
-        display: none;
+      /* Hide menu toggle on screens wider than 768px */
+      @media (min-width: 769px) {
+        .menu-toggle {
+          display: none;
+        }
       }
-    }
 
-    .menu-toggle:hover,
-    .menu-toggle:focus-visible {
-      color: var(--text);
-      outline: none;
-      transform: translateX(-50%) scale(1.2);
+      .menu-toggle:hover,
+      .menu-toggle:focus-visible {
+        color: var(--text);
+        outline: none;
+        transform: translateX(-50%) scale(1.2);
+      }
     }
 
     @media (max-width: 480px) {
