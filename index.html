@@ -36,14 +36,14 @@
       box-sizing: border-box;
     }
     :root {
-      --primary: #0a0f1d;
-      --secondary: #1e1e1e;
-      --text: #ffffff;
-      --accent: #8a1538; /* Wine Red */
-      --deep-blue: #0a2540;
-      --deep-green: #0f3d3e;
-      --light-bg: #ffffff;
-      --light-text: #000000;
+      --primary: #000000;
+      --secondary: #4A0E25;
+      --text: #F8F5F2;
+      --accent: #C2A768; /* golden beige */
+      --deep-blue: #000000;
+      --deep-green: #0F3D2E;
+      --light-bg: #F8F5F2;
+      --light-text: #4A0E25;
     }
 
     body {
@@ -53,6 +53,8 @@
       color: var(--text);
       transition: background 0.3s, color 0.3s;
       overflow-x: hidden;
+      /* Add subtle shadow to body background */
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
     }
 
     /* Remove underline from logo link */
@@ -89,6 +91,81 @@
       color: var(--light-text);
     }
 
+    /* Adjust header background and shadow in light mode */
+    body.light-mode header {
+      background-color: var(--light-bg);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      color: var(--light-text);
+    }
+
+    /* Adjust nav links color in light mode */
+    body.light-mode nav a {
+      color: var(--light-text);
+    }
+
+    body.light-mode nav a:hover {
+      background-color: rgba(194, 167, 104, 0.2);
+      color: var(--accent);
+    }
+
+    /* Adjust toggle theme button border and background in light mode */
+    body.light-mode .toggle-theme {
+      border-color: var(--light-text);
+      background-color: transparent;
+    }
+
+    body.light-mode .toggle-theme:hover {
+      background-color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Scroll to top button adjustments for light mode */
+    body.light-mode #goToTopBtn,
+    body.light-mode #scrollToTopBtn {
+      background-color: var(--accent);
+      color: var(--light-text);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    body.light-mode #goToTopBtn:hover,
+    body.light-mode #scrollToTopBtn:hover {
+      background-color: #6e112d;
+      color: white;
+    }
+
+    /* Form inputs and textarea in light mode */
+    body.light-mode form input,
+    body.light-mode form textarea {
+      background-color: var(--light-bg);
+      color: var(--light-text);
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+      border: 1px solid #ccc;
+    }
+
+    body.light-mode form input:focus,
+    body.light-mode form textarea:focus {
+      box-shadow: 0 0 8px var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Form button in light mode */
+    body.light-mode form button {
+      background-color: var(--accent);
+      color: var(--light-bg);
+    }
+
+    body.light-mode form button:hover {
+      background-color: #6e112d;
+      color: white;
+    }
+
+    /* Footer adjustments in light mode */
+    body.light-mode footer {
+      background-color: var(--light-bg);
+      color: var(--light-text);
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -98,7 +175,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
       backdrop-filter: saturate(180%) blur(10px);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
@@ -182,6 +259,23 @@
       transition: opacity 0.4s ease;
     }
 
+    /* Override icon fill color in light mode for better contrast */
+    body.light-mode .toggle-theme .sun,
+    body.light-mode .toggle-theme .moon {
+      fill: var(--light-text);
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.5));
+    }
+<<<<<<< REPLACE
+    body.light-mode form button {
+      background-color: var(--accent);
+      color: var(--light-bg);
+    }
+=======
+    body.light-mode form button {
+      background-color: var(--accent);
+      color: var(--light-bg);
+    }
+
     .toggle-theme .sun {
       opacity: 1;
     }
@@ -239,20 +333,32 @@
         transform: translateX(-50%);
         z-index: 1101;
       }
+    }
 
-      /* Hide menu toggle on screens wider than 768px */
-      @media (min-width: 769px) {
-        .menu-toggle {
-          display: none;
-        }
-      }
+    /* Fix hamburger menu toggle button color in light mode */
+    body.light-mode .menu-toggle {
+      color: var(--light-text);
+    }
 
-      .menu-toggle:hover,
-      .menu-toggle:focus-visible {
-        color: var(--text);
-        outline: none;
-        transform: translateX(-50%) scale(1.2);
+    body.light-mode .menu-toggle:hover,
+    body.light-mode .menu-toggle:focus-visible {
+      color: var(--accent);
+      outline: none;
+      transform: translateX(-50%) scale(1.2);
+    }
+
+    /* Hide menu toggle on screens wider than 768px */
+    @media (min-width: 769px) {
+      .menu-toggle {
+        display: none;
       }
+    }
+
+    .menu-toggle:hover,
+    .menu-toggle:focus-visible {
+      color: var(--text);
+      outline: none;
+      transform: translateX(-50%) scale(1.2);
     }
 
     @media (max-width: 480px) {
@@ -343,23 +449,26 @@
       cursor: pointer;
       margin-top: 1.5rem;
       font-weight: 600;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.2s ease;
     }
 
     .btn:hover {
       background-color: #6e112d;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(155, 28, 72, 0.7);
     }
 
     .founder-img {
       width: 180px;
       border-radius: 50%;
       margin: 1rem 0;
-      box-shadow: 0 0 10px var(--accent);
-      transition: transform 0.3s;
+      box-shadow: 0 0 12px var(--accent);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .founder-img:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 20px var(--accent);
     }
 
     form input, form textarea {
@@ -418,18 +527,26 @@
     background-color: var(--secondary);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
     text-align: center;
     color: var(--text);
+    border: 1px solid transparent;
+  }
+
+  body.light-mode .product-card {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
 
   .product-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(138,21,56,0.7);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.9);
   }
 
   .product-image {
@@ -484,7 +601,7 @@
   /* Enhanced hover effects for buttons and links */
   .btn:hover, nav a:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(138, 21, 56, 0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
   }
 
   /* Scroll reveal animation */
@@ -498,6 +615,43 @@
     opacity: 1;
     transform: translateY(0);
   }
+  </style>
+  <style>
+    /* Light mode nav links color */
+    body.light-mode nav a {
+      color: var(--deep-green);
+      font-weight: 700;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    body.light-mode nav a:hover {
+      background-color: rgba(194, 167, 104, 0.3);
+      color: var(--light-text);
+    }
+
+    /* Light mode hamburger menu toggle button */
+    body.light-mode .menu-toggle {
+      color: var(--deep-green);
+      background-color: var(--light-bg);
+      border: none;
+      border-radius: 4px;
+      padding: 0 6px;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    body.light-mode .menu-toggle:hover,
+    body.light-mode .menu-toggle:focus-visible {
+      color: var(--light-bg);
+      background-color: var(--accent);
+      border-color: var(--accent);
+      outline: none;
+      transform: translateX(-50%) scale(1.2);
+    }
+
+    /* Light mode nav links color when menu is open */
+    body.light-mode nav.show a {
+      color: white !important;
+    }
   </style>
   <style>
     #founder {
@@ -551,42 +705,42 @@
     </button>
   </header>
   <style>
-    .classic-banner {
-      background-color: #f5f5dc;
-      color: #333333;
+  .classic-banner {
+      background-color: #F8F5F2;
+      color: #4A0E25;
       font-family: 'Georgia', serif;
       font-size: 1.2rem;
       font-weight: 600;
       text-align: center;
       padding: 0.5rem 0;
       letter-spacing: 0.05em;
-      border-bottom: 2px solid #8a1538;
+      border-bottom: 2px solid #C2A768;
       user-select: none;
     }
   </style>
 
   <section id="hero" class="hero">
-    <h1>Timeless Elegance. Built for Legends.</h1>
-    <p>Luxury watches designed with purpose and power.</p>
-    <button class="btn" onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' });">Explore Collection</button>
+    <h1>Experience Timeless Elegance. Crafted for Legends.</h1>
+    <p>Discover luxury watches meticulously designed to embody purpose, power, and precision.</p>
+    <button class="btn" onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' });">Explore Our Exclusive Collection</button>
   </section>
 
   <section id="founder">
-    <h2>Meet the Founder</h2>
-    <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/498015082_17879439948300113_2529025175131458705_n.jpg" alt="Ronak Patel" class="founder-img" /> 
+    <h2>Meet the Visionary Founder</h2>
+<img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/498015082_17879439948300113_2529025175131458705_n.jpg" alt="Ronak Patel, Founder and CEO of VRATUS" class="founder-img" loading="lazy" />
     <p><strong>Ronak Patel</strong><br>Founder & CEO</p>
-    <p><em>"Creating timepieces that reflect both strength and elegance is my passion."</em></p>
-    <p>Email: <a href="mailto:patelronak1514@gmail.com" class="founder-email">patelronak1514@gmail.com</a></p>
+    <p><em>"My passion lies in creating timepieces that seamlessly blend strength with elegance, reflecting the spirit of the wearer."</em></p>
+    <p>Contact: <a href="mailto:patelronak1514@gmail.com" class="founder-email">patelronak1514@gmail.com</a></p>
   </section>
 
   <section id="vision">
     <h2>Our Vision</h2>
-    <p>At VRATUS™, our mission is to combine the refined elegance of dress watches with the enduring strength of diver-style functionality. We focus on craftsmanship, affordability, and bold designs that reflect power and class.</p>
+    <p>At VRATUS™, we strive to merge the refined elegance of dress watches with the rugged durability of diver-style craftsmanship. Our focus is on exceptional quality, affordability, and bold designs that embody power and sophistication.</p>
   </section>
 
   <section id="craftsmanship">
     <h2>Craftsmanship</h2>
-    <p>Inspired by the intricate textures of Grand Seiko dials, VRATUS™ watches are crafted with artistic finesse. Every detail, from textured faces to the robust casing, is designed to stand the test of time while exuding class.</p>
+    <p>Drawing inspiration from the intricate textures of Grand Seiko dials, VRATUS™ watches are crafted with unparalleled artistic finesse. Every element, from the textured faces to the robust casing, is designed to endure the test of time while exuding timeless class.</p>
   </section>
 
   <!-- New Products Section -->
@@ -594,7 +748,7 @@
     <h2>Signature Timepieces</h2>
     <div class="products">
       <a href="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch2.png" class="product-card" target="_blank" rel="noopener">
-        <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch2.png" alt="Aurora Watch" class="product-image" />
+<img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch2.png" alt="Aurora Borealis luxury watch dial inspired by Northern Lights" class="product-image" loading="lazy" />
         <div class="product-info">
           <div class="product-name">Aurora Borealis</div>
           <div class="product-desc">Dial inspired by the shimmering Northern Lights, featuring luminous gradients that dance in the dark.</div>
@@ -603,7 +757,7 @@
       </a>
 
       <a href="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch3.png" class="product-card" target="_blank" rel="noopener">
-        <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch3.png" alt="Terra Watch" class="product-image" />
+<img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch3.png" alt="Terra Firma watch with rugged earth textured dial" class="product-image" loading="lazy" />
         <div class="product-info">
           <div class="product-name">Terra Firma</div>
           <div class="product-desc">Dial textured with rugged earth patterns, evoking the spirit of adventure and exploration.</div>
@@ -612,7 +766,7 @@
       </a>
 
       <a href="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch7.jpeg" class="product-card" target="_blank" rel="noopener">
-        <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch7.jpeg" alt="Oceanus Watch" class="product-image" />
+<img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch7.jpeg" alt="Oceanus Wave watch with deep blue wave textured dial" class="product-image" loading="lazy" />
         <div class="product-info">
           <div class="product-name">Oceanus Wave</div>
           <div class="product-desc">Deep blue dial with wave-like textures, capturing the calm and power of the ocean.</div>
@@ -621,7 +775,7 @@
       </a>
 
       <a href="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch14.jpeg" class="product-card" target="_blank" rel="noopener">
-        <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch14.jpeg" alt="Ember Watch" class="product-image" />
+<img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch14.jpeg" alt="Ember Glow watch with warm red glowing ember dial" class="product-image" loading="lazy" />
         <div class="product-info">
           <div class="product-name">Ember Glow</div>
           <div class="product-desc">Warm red dial inspired by glowing embers, radiating passion and strength.</div>
@@ -630,7 +784,7 @@
       </a>
 
       <a href="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch22.jpg" class="product-card" target="_blank" rel="noopener">
-        <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch22.jpg" alt="Solis Watch" class="product-image" />
+<img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch22.jpg" alt="Solis Radiance watch with bright gold sun-inspired dial" class="product-image" loading="lazy" />
         <div class="product-info">
           <div class="product-name">Solis Radiance</div>
           <div class="product-desc">Bright gold dial inspired by the sun’s radiant warmth and luxury.</div>
@@ -639,7 +793,7 @@
       </a>
 
       <a href="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch23.jpg" class="product-card" target="_blank" rel="noopener">
-        <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch23.jpg" alt="Luna Watch" class="product-image" />
+<img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch23.jpg" alt="Luna Galaxy watch with silver moon phases and galaxy textures" class="product-image" loading="lazy" />
         <div class="product-info">
           <div class="product-name">Luna Galaxy</div>
           <div class="product-desc">Silver dial with moon phases and galaxy-inspired textures, perfect for night-time elegance.</div>
@@ -648,7 +802,7 @@
       </a>
 
       <a href="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch24.jpg" class="product-card" target="_blank" rel="noopener">
-        <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch24.jpg" alt="Terra Nova Watch" class="product-image" />
+<img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch24.jpg" alt="Terra Nova Explorer watch with earth-toned rugged dial" class="product-image" loading="lazy" />
         <div class="product-info">
           <div class="product-name">Terra Nova Explorer</div>
           <div class="product-desc">Earth-toned dial with rugged textures, designed for the modern explorer.</div>
@@ -657,7 +811,7 @@
       </a>
 
       <a href="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch25.jpg" class="product-card" target="_blank" rel="noopener">
-        <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch25.jpg" alt="Ventus Watch" class="product-image" />
+<img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch25.jpg" alt="Ventus Zephyr watch with wind-inspired sleek dial" class="product-image" loading="lazy" />
         <div class="product-info">
           <div class="product-name">Ventus Zephyr</div>
           <div class="product-desc">Wind-inspired dial with sleek lines, symbolizing freedom and movement.</div>
@@ -666,7 +820,7 @@
       </a>
 
       <a href="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch29.jpg" class="product-card" target="_blank" rel="noopener">
-        <img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch29.jpg" alt="Ignis Watch" class="product-image" />
+<img src="https://raw.githubusercontent.com/roni1415/vratus.com/refs/heads/main/watch29.jpg" alt="Ignis Flame watch with fiery red dynamic textured dial" class="product-image" loading="lazy" />
         <div class="product-info">
           <div class="product-name">Ignis Flame</div>
           <div class="product-desc">Fiery red dial with dynamic textures, designed for bold personalities.</div>
